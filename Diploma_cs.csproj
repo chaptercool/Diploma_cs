@@ -60,8 +60,74 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\Alerts\CheckMark.svg" />
+	  <None Remove="Resources\Images\Alerts\Error.svg" />
+	  <None Remove="Resources\Images\Alerts\Lock.svg" />
+	  <None Remove="Resources\Images\Alerts\Unlock.svg" />
+	  <None Remove="Resources\Images\Alerts\Warning.svg" />
+	  <None Remove="Resources\Images\Misc\SadEmoji.svg" />
+	  <None Remove="Resources\Images\Misc\VerySadEmoji.svg" />
+	  <None Remove="Resources\Images\UiIcons\Add.svg" />
+	  <None Remove="Resources\Images\UiIcons\ArrowLeftActive.svg" />
+	  <None Remove="Resources\Images\UiIcons\ArrowLeftInactive.svg" />
+	  <None Remove="Resources\Images\UiIcons\ArrowRightActive.svg" />
+	  <None Remove="Resources\Images\UiIcons\ArrowRightInactive.svg" />
+	  <None Remove="Resources\Images\UiIcons\Calendar.svg" />
+	  <None Remove="Resources\Images\UiIcons\Home.svg" />
+	  <None Remove="Resources\Images\UiIcons\List.svg" />
+	  <None Remove="Resources\Images\UiIcons\RoundArrowRight.svg" />
+	  <None Remove="Resources\Images\UiIcons\SettinG.svg" />
+	  <None Remove="Resources\Images\UiIcons\Settings.svg" />
+	  <None Remove="Resources\Images\UiIcons\x.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="SecondaryPages\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\Alerts\checkmark.svg" />
+	  <MauiImage Include="Resources\Images\Alerts\error.svg" />
+	  <MauiImage Include="Resources\Images\Alerts\lock.svg" />
+	  <MauiImage Include="Resources\Images\Alerts\unlock.svg" />
+	  <MauiImage Include="Resources\Images\Alerts\warning.svg" />
+	  <MauiImage Include="Resources\Images\Misc\sademoji.svg" />
+	  <MauiImage Include="Resources\Images\Misc\verysademoji.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\UiIcons\add.svg" />
+	  <MauiImage Include="Resources\Images\UiIcons\arrowleftactive.svg" />
+	  <MauiImage Include="Resources\Images\UiIcons\arrowleftinactive.svg" />
+	  <MauiImage Include="Resources\Images\UiIcons\arrowrightactive.svg" />
+	  <MauiImage Include="Resources\Images\UiIcons\arrowrightinactive.svg" />
+	  <MauiImage Include="Resources\Images\UiIcons\calendar.svg" />
+	  <MauiImage Include="Resources\Images\UiIcons\home.svg" />
+	  <MauiImage Include="Resources\Images\UiIcons\list.svg" />
+	  <MauiImage Include="Resources\Images\UiIcons\roundarrowright.svg" />
+	  <MauiImage Include="Resources\Images\UiIcons\setting.svg" />
+	  <MauiImage Include="Resources\Images\UiIcons\settings.svg" />
+	  <MauiImage Include="Resources\Images\UiIcons\x.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="ActivityPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="RegisterActivityPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="SettingsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="TipsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

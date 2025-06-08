@@ -13,6 +13,15 @@ namespace Diploma_cs
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("Onest-Thin.ttf", "OnestThin");
+                    fonts.AddFont("Onest-ExtraLight.ttf", "OnestExtraLight");
+                    fonts.AddFont("Onest-Light.ttf", "OnestLight");
+                    fonts.AddFont("Onest-Regular.ttf", "OnestRegular");
+                    fonts.AddFont("Onest-Medium.ttf", "OnestMedium");
+                    fonts.AddFont("Onest-SemiBold.ttf", "OnestSemiBold");
+                    fonts.AddFont("Onest-Bold.ttf", "OnestBold");
+                    fonts.AddFont("Onest-ExtraBold.ttf", "OnestExtraBold");
+                    fonts.AddFont("Onest-Black.ttf", "OnestBlack");
                 });
 
 #if DEBUG
