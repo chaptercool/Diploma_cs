@@ -1,12 +1,71 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Diploma_cs.SettingsPage"
-             Title="SettingsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="(ustawienia maybe)"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2021/maui/toolkit"
+             x:Class="Diploma_cs.SettingsPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="27"
+            Spacing="13">
+            <Label
+                Text="Ustawienia"
+                FontSize="36"
+                FontFamily="OnestExtraBold"
+                LineBreakMode="WordWrap"/>
+            <Label
+                Text="Cześć, Jarek!"
+                FontSize="24"
+                FontFamily="OnestSemiBold"
+                LineBreakMode="WordWrap"/>
+            <VerticalStackLayout
+                Spacing="22">
+                <Label
+                    Text="Preferencje"
+                    TextDecorations="Underline"
+                    FontSize="17"
+                    FontFamily="OnestMedium"/>
+                <Label
+                    Text="Wygląd"
+                    TextDecorations="Underline"
+                    FontSize="17"
+                    FontFamily="OnestMedium"/>
+                <Label
+                    Text="Tryb aplikacji"
+                    TextDecorations="Underline"
+                    FontSize="17"
+                    FontFamily="OnestMedium"/>
+                <RoundRectangle 
+                    HorizontalOptions="Fill"
+                    HeightRequest="5"
+                    Fill="#DBD9D7"
+                    CornerRadius="5"
+                    x:Name="BlockSeparator2"/>
+                <Label
+                    Text="Prywatność i bezpieczeństwo"
+                    TextDecorations="Underline"
+                    FontSize="17"
+                    FontFamily="OnestMedium"/>
+                <Label
+                    Text="O aplikacji"
+                    TextDecorations="Underline"
+                    FontSize="17"
+                    FontFamily="OnestMedium"/>
+                <RoundRectangle 
+                    HorizontalOptions="Fill"
+                    HeightRequest="5"
+                    Fill="#DBD9D7"
+                    CornerRadius="5"
+                    x:Name="BlockSeparator8"/>
+                <Label
+                    Text="Zgłoś usterkę!"
+                    TextDecorations="Underline"
+                    FontSize="17"
+                    FontFamily="OnestMedium"/>
+
+            </VerticalStackLayout>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

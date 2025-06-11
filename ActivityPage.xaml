@@ -1,12 +1,125 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Diploma_cs.ActivityPage"
-             Title="ActivityPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="(insert activity page here)"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             x:Class="Diploma_cs.ActivityPage">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="27"
+            Spacing="13">
+            <Label
+                Text="Aktywność"
+                FontSize="36"
+                FontFamily="OnestExtraBold"/>
+            <HorizontalStackLayout
+                Padding="2, 0"
+                Spacing="10">
+                <ImageButton
+                    x:Name="previousMonthButton"
+                    Source="arrowleftactive.png"
+                    MaximumHeightRequest="12"
+                    BackgroundColor="Transparent"
+                    Clicked="PreviousMonthClicked"/>
+                <Label
+                    x:Name="monthYearLabel"
+                    Text="Czerwiec 2025"
+                    FontSize="24"
+                    FontFamily="OnestSemiBold"/>
+                <ImageButton
+                    x:Name="nextMonthButton"
+                    Source="arrowrightactive.png"
+                    MaximumHeightRequest="12"
+                    BackgroundColor="Transparent"
+                    Clicked="NextMonthClicked"/>
+            </HorizontalStackLayout>
+            <Grid
+                x:Name="calendarGrid"
+                ColumnDefinitions="*, *, *, *, *, *, *"
+                RowDefinitions="*, *, *, *, *, *, *"
+                ColumnSpacing="10"
+                RowSpacing="10">
+                
+                <!--Dni tygodnia-->
+                <Label
+                    Text="pon"
+                    FontSize="12"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                <Label
+                    Text="wto"
+                    FontSize="12"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                <Label
+                    Text="śro"
+                    FontSize="12"
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                <Label
+                    Text="czw"
+                    FontSize="12"
+                    Grid.Column="3"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                <Label
+                    Text="pią"
+                    FontSize="12"
+                    Grid.Column="4"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                <Label
+                    Text="sob"
+                    FontSize="12"
+                    Grid.Column="5"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                <Label
+                    Text="nie"
+                    FontSize="12"
+                    Grid.Column="6"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+
+                <!-- dni wrzucane sa losowo -->
+            </Grid>
+
+            <RoundRectangle 
+                HorizontalOptions="Fill"
+                HeightRequest="5"
+                Fill="#DBD9D7"
+                CornerRadius="5"
+                x:Name="BlockSeparator"/>
+            <Label
+                Text="Twoje tendencje"
+                FontSize="24"
+                FontFamily="OnestSemiBold"/>
+            <Label
+                Text="W tym tygodniu starasz się palić mniej niż zazwyczaj"
+                FontSize="16"
+                LineBreakMode="WordWrap"/>
+            <Image
+                Source="tendencyblock.png"/>
+            <GraphicsView
+                x:Name="DashedSeparator"
+                HeightRequest="5"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center"/>
+            <Label
+                Text="Zauważono większą chęć do palenia bez przyczyny"
+                FontSize="16"
+                LineBreakMode="WordWrap"/>
+            <Image
+                Source="tendencyblock.png"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

@@ -1,12 +1,62 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Diploma_cs.RegisterActivityPage"
-             Title="RegisterActivityPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="(register activity page here...)"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             x:Class="Diploma_cs.RegisterActivityPage">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="27"
+            Spacing="13">
+            <Label
+                Text="Rejestracja aktywności"
+                FontSize="36"
+                FontFamily="OnestExtraBold"
+                LineBreakMode="WordWrap"/>
+            <Label
+                Text="Wybierz czynność"
+                FontSize="24"
+                FontFamily="OnestSemiBold"/>
+            <Border
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 10">
+                <Button
+                    Text="Chcę zapalić"
+                    FontSize="20"
+                    BackgroundColor="{StaticResource Blue600}"
+                    Clicked="OnButtonClicked"
+                />
+            </Border>
+
+            <Border
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 10">
+                <Button
+                    Text="Zapaliłem papierosa"
+                    FontSize="20"
+                    TextColor="#526A92"
+                    BackgroundColor="{StaticResource Blue300}"
+                />
+            </Border>
+
+            <Border
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 10">
+                <Button
+                    Text="Kupiłem paczkę papierosów"
+                    FontSize="20"
+                    TextColor="#526A92"
+                    BackgroundColor="{StaticResource Blue300}"
+                />
+            </Border>
+            <Label
+                Text="Co muszę wybrać?"
+                FontFamily="OnestMedium"
+                TextDecorations="Underline"
+                FontSize="15"
+                HorizontalTextAlignment="Center"
+                TextColor="{StaticResource Gray700}"
+                Margin="0, 50"
+                HorizontalOptions="Center"
+                VerticalOptions="End"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

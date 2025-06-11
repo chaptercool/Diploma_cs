@@ -3,6 +3,7 @@
     x:Class="Diploma_cs.AppShell"  
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:local="clr-namespace:Diploma_cs"  
     Title="Diploma_cs">
     <TabBar>  
@@ -19,7 +20,7 @@
                 ContentTemplate="{DataTemplate local:ActivityPage}"/>  
         </Tab>  
         <Tab  
-            Title="Rejestracja aktywności"  
+            Title="Dodaj"  
             Icon="add.png">  
             <ShellContent  
                 ContentTemplate="{DataTemplate local:RegisterActivityPage}"/>  

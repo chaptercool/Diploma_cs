@@ -65,7 +65,9 @@
 	  <None Remove="Resources\Images\Alerts\Lock.svg" />
 	  <None Remove="Resources\Images\Alerts\Unlock.svg" />
 	  <None Remove="Resources\Images\Alerts\Warning.svg" />
+	  <None Remove="Resources\Images\Misc\checkmark_l.svg" />
 	  <None Remove="Resources\Images\Misc\SadEmoji.svg" />
+	  <None Remove="Resources\Images\Misc\TendencyBlock.svg" />
 	  <None Remove="Resources\Images\Misc\VerySadEmoji.svg" />
 	  <None Remove="Resources\Images\UiIcons\Add.svg" />
 	  <None Remove="Resources\Images\UiIcons\ArrowLeftActive.svg" />
@@ -82,12 +84,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="SecondaryPages\" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="12.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.71" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.6" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -96,7 +95,9 @@
 	  <MauiImage Include="Resources\Images\Alerts\lock.svg" />
 	  <MauiImage Include="Resources\Images\Alerts\unlock.svg" />
 	  <MauiImage Include="Resources\Images\Alerts\warning.svg" />
+	  <MauiImage Include="Resources\Images\Misc\checkmark_l.svg" />
 	  <MauiImage Include="Resources\Images\Misc\sademoji.svg" />
+	  <MauiImage Include="Resources\Images\Misc\tendencyblock.svg" />
 	  <MauiImage Include="Resources\Images\Misc\verysademoji.svg" />
 	</ItemGroup>
 
@@ -120,6 +121,15 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="RegisterActivityPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="SecondaryPages\ArticleViewPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="SecondaryPages\ReasonForActivityPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="SecondaryPages\SavedMessagePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="SettingsPage.xaml">

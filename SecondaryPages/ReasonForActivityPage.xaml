@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Diploma_cs.SecondaryPages.ReasonForActivityPage">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="27"
+            Spacing="13">
+            <Grid ColumnDefinitions="*,Auto" VerticalOptions="Start">
+                <Label
+                    Text="Chcę zapalić"
+                    FontSize="36"
+                    FontFamily="OnestExtraBold"
+                    LineBreakMode="WordWrap"
+                    VerticalOptions="Start"
+                    Grid.Column="0"/>
+                <ImageButton
+                    Source="x.png"
+                    MaximumHeightRequest="30"
+                    VerticalOptions="End"
+                    Grid.Column="1"
+                    Clicked="OnBackButtonClicked"/>
+            </Grid>
+            <Label
+                Text="Czy chcesz wskazać przyczyne dlaczego chcesz zapalić?"
+                FontSize="24"
+                FontFamily="OnestSemiBold"
+                LineBreakMode="WordWrap"/>
+            <Border
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 10">
+                <Button
+                    Text="Tak"
+                    FontSize="20"
+                    BackgroundColor="{StaticResource Blue600}"
+                />
+            </Border>
+            <Border
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 10">
+                <Button
+                    Text="Pomiń"
+                    FontSize="20"
+                    TextColor="#526A92"
+                    BackgroundColor="{StaticResource Blue300}"
+                    Clicked="OnButtonClicked"
+                />
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
