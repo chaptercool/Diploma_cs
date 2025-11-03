@@ -3,49 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Diploma_cs.SecondaryPages.ReasonForActivityPage">
     <ScrollView>
-        <VerticalStackLayout
-            Padding="27"
-            Spacing="13">
-            <Grid ColumnDefinitions="*,Auto" VerticalOptions="Start">
+        <VerticalStackLayout Style="{StaticResource VerticalStackProperties}">
+            <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
                 <Label
                     Text="Chcę zapalić"
-                    FontSize="36"
-                    FontFamily="OnestExtraBold"
-                    LineBreakMode="WordWrap"
-                    VerticalOptions="Start"
+                    Style="{StaticResource Heading1}"
                     Grid.Column="0"/>
                 <ImageButton
                     Source="x.png"
-                    MaximumHeightRequest="30"
-                    VerticalOptions="End"
+                    Style="{StaticResource Heading1Button}"
                     Grid.Column="1"
                     Clicked="OnBackButtonClicked"/>
             </Grid>
-            <Label
-                Text="Czy chcesz wskazać przyczyne dlaczego chcesz zapalić?"
-                FontSize="24"
-                FontFamily="OnestSemiBold"
-                LineBreakMode="WordWrap"/>
-            <Border
-                Stroke="Transparent"
-                StrokeShape="RoundRectangle 10">
-                <Button
-                    Text="Tak"
-                    FontSize="20"
-                    BackgroundColor="{StaticResource Blue600}"
-                />
-            </Border>
-            <Border
-                Stroke="Transparent"
-                StrokeShape="RoundRectangle 10">
-                <Button
-                    Text="Pomiń"
-                    FontSize="20"
-                    TextColor="#526A92"
-                    BackgroundColor="{StaticResource Blue300}"
-                    Clicked="OnButtonClicked"
-                />
-            </Border>
+            <Label Text="Czy chcesz wskazać przyczyne dlaczego chcesz zapalić?" Style="{StaticResource Heading2}"/>
+            <Button Style="{StaticResource PrimaryButton}" Text="Tak"/>
+            <Button Style="{StaticResource SecondaryButton}" Text="Pomiń" Clicked="OnButtonClicked"/>
 
         </VerticalStackLayout>
     </ScrollView>

@@ -37,6 +37,7 @@
     <Color x:Key="Blue400">#72A9F3</Color>
     <Color x:Key="Blue500">#4692E3</Color>
     <Color x:Key="Blue600">#2371B4</Color>
+    <Color x:Key="Blue650">#526A92</Color>
     <Color x:Key="Blue700">#125785</Color>
     <Color x:Key="Blue900">#0A3C55</Color>
     <Color x:Key="Blue950">#041D26</Color>
@@ -48,6 +49,7 @@
     <Color x:Key="Red400">#E95549</Color>
     <Color x:Key="Red500">#CC1714</Color>
     <Color x:Key="Red600">#A30707</Color>
+    <Color x:Key="Red650">#A45449</Color>
     <Color x:Key="Red700">#790202</Color>
     <Color x:Key="Red900">#500000</Color>
     <Color x:Key="Red950">#260000</Color>

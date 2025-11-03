@@ -1,28 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+             xmlns:droid="clr-namespace:CommunityToolkit.Maui.PlatformConfiguration.AndroidSpecific;assembly=CommunityToolkit.Maui"
+             droid:NavigationBar.Color="White"
+             droid:NavigationBar.Style="Default"
              x:Class="Diploma_cs.MainPage">
 
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="Transparent" StatusBarStyle="DarkContent"/>
+    </ContentPage.Behaviors>
     <ScrollView>
-        <VerticalStackLayout
-            Padding="27"
-            Spacing="13">
-            <Label
-                Text="Ekran główny"
-                FontSize="36"
-                FontFamily="OnestExtraBold"/>
+        <VerticalStackLayout Style="{StaticResource VerticalStackProperties}">
+            <Label Text="Ekran główny" Style="{StaticResource Heading1}"/>
 
-            <Label
-                Text="Twój cel na dzisiaj"
-                FontSize="24"
-                FontFamily="OnestSemiBold"/>
+            <Label Text="Twój cel na dzisiaj" Style="{StaticResource Heading2}"/>
 
-            <VerticalStackLayout
-                Padding="0, -10, 0, 17"
-                Spacing="-12"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                x:Name="MainCounterBlock">
+            <VerticalStackLayout Style="{StaticResource MainCounterBlock}" x:Name="MainCounterBlock">
                 <Label
                     Text="10"
                     FontFamily="OnestExtraBold"
@@ -35,25 +29,11 @@
                     HorizontalOptions="Center"
                     TextColor="#95918E"/>
             </VerticalStackLayout>
-            <RoundRectangle 
-                HorizontalOptions="Fill"
-                HeightRequest="5"
-                Fill="#DBD9D7"
-                CornerRadius="5"
-                x:Name="BlockSeparator"/>
+            <RoundRectangle Style="{StaticResource BlockSeparator}"/>
+
             <Grid HorizontalOptions="Fill">
-                <Label
-                    Text="Twoje pozostałe cele"
-                    FontSize="24"
-                    FontFamily="OnestSemiBold"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Center"/>
-                <Image 
-                    Source="setting.png" 
-                    HorizontalOptions="End"
-                    VerticalOptions="Center"
-                    HeightRequest="18"
-                    WidthRequest="18"/>
+                <Label Text="Twoje pozostałe cele" Style="{StaticResource Heading2}"/>
+                <ImageButton Style="{StaticResource Heading2Button}" Source="setting.png"/>
             </Grid>
             <HorizontalStackLayout
                 Spacing="9"
@@ -146,25 +126,16 @@
                     </StackLayout>
                 </Border>
             </HorizontalStackLayout>
-            <RoundRectangle 
-                HorizontalOptions="Fill"
-                HeightRequest="5"
-                Fill="#DBD9D7"
-                CornerRadius="5"
-                x:Name="BlockSeparator2"/>
+            
+            <RoundRectangle Style="{StaticResource BlockSeparator}"/>
+            
             <Grid HorizontalOptions="Fill">
                 <Label
                     Text="Osiągnięcia"
-                    FontSize="24"
-                    FontFamily="OnestSemiBold"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Center"/>
-                <Image 
-                    Source="roundarrowright.png" 
-                    HorizontalOptions="End"
-                    VerticalOptions="Center"
-                    HeightRequest="18"
-                    WidthRequest="18"/>
+                    Style="{StaticResource Heading2}"/>
+                <ImageButton 
+                    Source="roundarrowright.png"
+                    Style="{StaticResource Heading2Button}"/>
             </Grid>
             <HorizontalStackLayout
                 Spacing="9"
@@ -266,16 +237,11 @@
                     </StackLayout>
                 </Border>
             </HorizontalStackLayout>
-            <RoundRectangle 
-                HorizontalOptions="Fill"
-                HeightRequest="5"
-                Fill="#DBD9D7"
-                CornerRadius="5"
-                x:Name="BlockSeparator3"/>
+            <RoundRectangle Style="{StaticResource BlockSeparator}"/>
+
             <Label
                 Text="Dzisiejsza afirmacja"
-                FontSize="24"
-                FontFamily="OnestSemiBold"/>
+                Style="{StaticResource Heading2}"/>
             <StackLayout
                 Orientation="Vertical"
                 HorizontalOptions="Fill"
@@ -289,22 +255,7 @@
                     LineBreakMode="WordWrap"
                     TextColor="{StaticResource Blue400}"/>
             </StackLayout>
-            <RoundRectangle 
-                HorizontalOptions="Fill"
-                HeightRequest="5"
-                Fill="#DBD9D7"
-                CornerRadius="5"
-                x:Name="BlockSeparator4"/>
-
-            <Label
-                Text="Dostosuj układ strony"
-                FontFamily="OnestMedium"
-                TextDecorations="Underline"
-                FontSize="15"
-                HorizontalTextAlignment="Center"
-                TextColor="{StaticResource Gray700}"
-                Margin="0, 50"
-                HorizontalOptions="Center"/>
+            
         </VerticalStackLayout>
     </ScrollView>
 

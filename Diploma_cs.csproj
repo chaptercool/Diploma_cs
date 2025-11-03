@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net9.0-android;net9.0-maccatalyst</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net9.0-tizen</TargetFrameworks> -->
@@ -35,7 +35,7 @@
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">28.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
@@ -69,6 +69,12 @@
 	  <None Remove="Resources\Images\Misc\SadEmoji.svg" />
 	  <None Remove="Resources\Images\Misc\TendencyBlock.svg" />
 	  <None Remove="Resources\Images\Misc\VerySadEmoji.svg" />
+	  <None Remove="Resources\Images\SettingsIcons\information.svg" />
+	  <None Remove="Resources\Images\SettingsIcons\mode.svg" />
+	  <None Remove="Resources\Images\SettingsIcons\prefer.svg" />
+	  <None Remove="Resources\Images\SettingsIcons\privacy.svg" />
+	  <None Remove="Resources\Images\SettingsIcons\theme.svg" />
+	  <None Remove="Resources\Images\SettingsIcons\warn.svg" />
 	  <None Remove="Resources\Images\UiIcons\Add.svg" />
 	  <None Remove="Resources\Images\UiIcons\ArrowLeftActive.svg" />
 	  <None Remove="Resources\Images\UiIcons\ArrowLeftInactive.svg" />
@@ -84,9 +90,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="12.0.0" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.71" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.6" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="12.2.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.120" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.10" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -99,6 +105,11 @@
 	  <MauiImage Include="Resources\Images\Misc\sademoji.svg" />
 	  <MauiImage Include="Resources\Images\Misc\tendencyblock.svg" />
 	  <MauiImage Include="Resources\Images\Misc\verysademoji.svg" />
+	  <MauiImage Include="Resources\Images\SettingsIcons\mode.svg" />
+	  <MauiImage Include="Resources\Images\SettingsIcons\prefer.svg" />
+	  <MauiImage Include="Resources\Images\SettingsIcons\privacy.svg" />
+	  <MauiImage Include="Resources\Images\SettingsIcons\theme.svg" />
+	  <MauiImage Include="Resources\Images\SettingsIcons\warn.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -117,10 +128,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Include="Resources\Images\SettingsIcons\information.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Resources\Styles\StyleSheet.xaml.cs">
+	    <DependentUpon>StyleSheet.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="ActivityPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="RegisterActivityPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\StyleSheet.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="SecondaryPages\ArticleViewPage.xaml">

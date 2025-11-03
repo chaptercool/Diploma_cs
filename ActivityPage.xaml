@@ -3,32 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Diploma_cs.ActivityPage">
     <ScrollView>
-        <VerticalStackLayout
-            Padding="27"
-            Spacing="13">
-            <Label
-                Text="Aktywność"
-                FontSize="36"
-                FontFamily="OnestExtraBold"/>
+        <VerticalStackLayout Style="{StaticResource VerticalStackProperties}">
+            <Label Text="Aktywność" Style="{StaticResource Heading1}"/>
             <HorizontalStackLayout
                 Padding="2, 0"
                 Spacing="10">
                 <ImageButton
                     x:Name="previousMonthButton"
                     Source="arrowleftactive.png"
-                    MaximumHeightRequest="12"
-                    BackgroundColor="Transparent"
+                    Style="{StaticResource CalendarHeading2Button}"
                     Clicked="PreviousMonthClicked"/>
                 <Label
                     x:Name="monthYearLabel"
                     Text="Czerwiec 2025"
-                    FontSize="24"
-                    FontFamily="OnestSemiBold"/>
+                    Style="{StaticResource Heading2}"/>
                 <ImageButton
                     x:Name="nextMonthButton"
                     Source="arrowrightactive.png"
-                    MaximumHeightRequest="12"
-                    BackgroundColor="Transparent"
+                    Style="{StaticResource CalendarHeading2Button}"
                     Clicked="NextMonthClicked"/>
             </HorizontalStackLayout>
             <Grid
@@ -92,33 +84,22 @@
                 <!-- dni wrzucane sa losowo -->
             </Grid>
 
-            <RoundRectangle 
-                HorizontalOptions="Fill"
-                HeightRequest="5"
-                Fill="#DBD9D7"
-                CornerRadius="5"
-                x:Name="BlockSeparator"/>
-            <Label
-                Text="Twoje tendencje"
-                FontSize="24"
-                FontFamily="OnestSemiBold"/>
-            <Label
-                Text="W tym tygodniu starasz się palić mniej niż zazwyczaj"
-                FontSize="16"
-                LineBreakMode="WordWrap"/>
+            <RoundRectangle Style="{StaticResource BlockSeparator}"/>
+            
+            <Label Text="Twoje tendencje" Style="{StaticResource Heading2}"/>
+            
+            <Label Text="W tym tygodniu starasz się palić mniej niż zazwyczaj" Style="{StaticResource AdditionalText}"/>
             <Image
                 Source="tendencyblock.png"/>
+            <!--???-->
             <GraphicsView
                 x:Name="DashedSeparator"
                 HeightRequest="5"
                 HorizontalOptions="Fill"
                 VerticalOptions="Center"/>
-            <Label
-                Text="Zauważono większą chęć do palenia bez przyczyny"
-                FontSize="16"
-                LineBreakMode="WordWrap"/>
-            <Image
-                Source="tendencyblock.png"/>
+            
+            <Label Text="Zauważono większą chęć do palenia bez przyczyny" Style="{StaticResource AdditionalText}"/>
+            <Image Source="tendencyblock.png"/>
 
         </VerticalStackLayout>
     </ScrollView>

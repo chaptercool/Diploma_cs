@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Diploma_cs.Resources.Styles.Dictionary1">
+    <!--PAGE PADDING-->
+    <Style TargetType="VerticalStackLayout" x:Key="VerticalStackProperties">
+        <Setter Property="Padding" Value="27"/>
+        <Setter Property="Spacing" Value="13"/>
+    </Style>
+    
+    <!--LABELS-->
+    <Style TargetType="Label" x:Key="Heading1">
+        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="FontFamily" Value="OnestExtraBold"/>
+        <Setter Property="LineBreakMode" Value="WordWrap"/>
+    </Style>
+    
+    <Style TargetType="Label" x:Key="Heading2">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontFamily" Value="OnestSemiBold"/>
+    </Style>
+    
+    <Style TargetType="Label" x:Key="AdditionalText">
+        <Setter Property="FontFamily" Value="OnestRegular"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+    
+    <!--BUTTONS-->
+    <Style TargetType="Button" x:Key="PrimaryButton">
+        <Setter Property="FontFamily" Value="OnestSemiBold"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="TextColor" Value="{StaticResource White}"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource Blue600}"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="10,5"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="SecondaryButton">
+        <Setter Property="FontFamily" Value="OnestSemiBold"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="TextColor" Value="{StaticResource Blue650}"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource Blue300}"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="10,5"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="TertiaryButton">
+        <Setter Property="FontFamily" Value="OnestSemiBold"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="TextColor" Value="{StaticResource Red650}"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource Red200}"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="10,5"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="LinkButton">
+        <Setter Property="FontFamily" Value="OnestMedium"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="TextColor" Value="{StaticResource Gray700}"/>
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="SettingsOptionButton">
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="TextColor" Value="Black"/>
+        <Setter Property="FontFamily" Value="OnestMedium"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="Margin" Value="-14, -10, 0, -10"/>
+        <Setter Property="MaximumHeightRequest" Value="40"/>
+    </Style>
+    
+    <!--Image button (heading1)-->
+    <Style TargetType="ImageButton" x:Key="Heading1Button">
+        <Setter Property="MaximumHeightRequest" Value="30"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+    </Style>
+
+    <!--Image button (for use with heading2)-->
+    <Style TargetType="ImageButton" x:Key="Heading2Button">
+        <Setter Property="MaximumHeightRequest" Value="18"/>
+        <Setter Property="MaximumWidthRequest" Value="18"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    
+    <!--Calendar Image button (for heading2)-->
+    <Style TargetType="ImageButton" x:Key="CalendarHeading2Button">
+        <Setter Property="MaximumHeightRequest" Value="12"/>
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+    </Style>
+
+    
+    <!--PAGE BLOCKS AND ELEMENTS-->
+    
+    <!--Main counter block-->
+    <Style TargetType="VerticalStackLayout" x:Key="MainCounterBlock">
+        <Setter Property="Padding" Value="0, -10, 0, 17"/>
+        <Setter Property="Spacing" Value="-12"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+    
+    
+    <!--Block separator-->
+    <Style TargetType="RoundRectangle" x:Key="BlockSeparator">
+        <Setter Property="HorizontalOptions" Value="Fill"/>
+        <Setter Property="HeightRequest" Value="5"/>
+        <Setter Property="Fill" Value="#DBD9D7"/>
+        <Setter Property="CornerRadius" Value="5"/>
+    </Style>
+</ResourceDictionary>
