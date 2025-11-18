@@ -1,0 +1,270 @@
+﻿{
+  "Scenario": "Regression",
+  "DataSource": {
+    "Version": 3,
+    "EscapeCharacter": "\"",
+    "ReadMultiLines": false,
+    "KeepDiacritics": false,
+    "KeepPunctuations": false,
+    "AllowQuoting": false,
+    "Type": "TabularFile",
+    "FilePath": "C:\\Users\\Yaroslav\\OneDrive - University of Information Technology and Management in Rzeszow\\PRACA_DYPLOMOWA\\collected_data.csv",
+    "Delimiter": ";",
+    "DecimalMarker": ".",
+    "HasHeader": true,
+    "ColumnProperties": [
+      {
+        "ColumnName": "AvgConsumedWeek",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "AvgBoughtPacks",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "BoughtSum",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "ReduceBy",
+        "ColumnPurpose": "Label",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      }
+    ]
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 3,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LbfgsPoissonRegressionRegression",
+        "Score": 0.40257406701540221,
+        "RuntimeInSeconds": 0.017,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e5",
+          "e0": {
+            "OutputColumnNames": [
+              "AvgConsumedWeek",
+              "AvgBoughtPacks",
+              "BoughtSum"
+            ],
+            "InputColumnNames": [
+              "AvgConsumedWeek",
+              "AvgBoughtPacks",
+              "BoughtSum"
+            ]
+          },
+          "e1": {
+            "InputColumnNames": [
+              "AvgConsumedWeek",
+              "AvgBoughtPacks",
+              "BoughtSum"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e5": {
+            "L1Regularization": 4.679746,
+            "L2Regularization": 1.5058335,
+            "LabelColumnName": "ReduceBy",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastForestRegression",
+        "Score": 0.39577727391926226,
+        "RuntimeInSeconds": 0.419,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e3",
+          "e0": {
+            "OutputColumnNames": [
+              "AvgConsumedWeek",
+              "AvgBoughtPacks",
+              "BoughtSum"
+            ],
+            "InputColumnNames": [
+              "AvgConsumedWeek",
+              "AvgBoughtPacks",
+              "BoughtSum"
+            ]
+          },
+          "e1": {
+            "InputColumnNames": [
+              "AvgConsumedWeek",
+              "AvgBoughtPacks",
+              "BoughtSum"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e3": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 1.0,
+            "LabelColumnName": "ReduceBy",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastForestRegression",
+        "Score": 0.39577727391926226,
+        "RuntimeInSeconds": 0.551,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e3",
+          "e0": {
+            "OutputColumnNames": [
+              "AvgConsumedWeek",
+              "AvgBoughtPacks",
+              "BoughtSum"
+            ],
+            "InputColumnNames": [
+              "AvgConsumedWeek",
+              "AvgBoughtPacks",
+              "BoughtSum"
+            ]
+          },
+          "e1": {
+            "InputColumnNames": [
+              "AvgConsumedWeek",
+              "AvgBoughtPacks",
+              "BoughtSum"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e3": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 6,
+            "FeatureFraction": 0.91806245,
+            "LabelColumnName": "ReduceBy",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastForestRegression",
+        "Score": 0.39577727391926226,
+        "RuntimeInSeconds": 0.493,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e3",
+          "e0": {
+            "OutputColumnNames": [
+              "AvgConsumedWeek",
+              "AvgBoughtPacks",
+              "BoughtSum"
+            ],
+            "InputColumnNames": [
+              "AvgConsumedWeek",
+              "AvgBoughtPacks",
+              "BoughtSum"
+            ]
+          },
+          "e1": {
+            "InputColumnNames": [
+              "AvgConsumedWeek",
+              "AvgBoughtPacks",
+              "BoughtSum"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e3": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 4,
+            "FeatureFraction": 1.0,
+            "LabelColumnName": "ReduceBy",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "FastForestRegression",
+        "Score": 0.39577727391926226,
+        "RuntimeInSeconds": 0.165,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e3",
+          "e0": {
+            "OutputColumnNames": [
+              "AvgConsumedWeek",
+              "AvgBoughtPacks",
+              "BoughtSum"
+            ],
+            "InputColumnNames": [
+              "AvgConsumedWeek",
+              "AvgBoughtPacks",
+              "BoughtSum"
+            ]
+          },
+          "e1": {
+            "InputColumnNames": [
+              "AvgConsumedWeek",
+              "AvgBoughtPacks",
+              "BoughtSum"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e3": {
+            "NumberOfTrees": 4,
+            "NumberOfLeaves": 7,
+            "FeatureFraction": 0.9852825,
+            "LabelColumnName": "ReduceBy",
+            "FeatureColumnName": "Features"
+          }
+        }
+      }
+    ],
+    "Estimators": {
+      "e0": "ReplaceMissingValues",
+      "e1": "Concatenate",
+      "e2": "FastTreeRegression",
+      "e3": "FastForestRegression",
+      "e4": "LightGbmRegression",
+      "e5": "LbfgsPoissonRegressionRegression",
+      "e6": "SdcaRegression"
+    },
+    "Schema": "e0 * e1 * (e2 + e3 + e4 + e5 + e6)",
+    "MetricName": "RSquared",
+    "ModelFilePath": "C:\\Users\\Yaroslav\\source\\repos\\Diploma_cs\\MachineLearning\\MainComputingModule.mlnet"
+  },
+  "Type": "TrainingConfig",
+  "Version": 5,
+  "TrainingOption": {
+    "Version": 2,
+    "Subsampling": false,
+    "Type": "RegressionTrainingOption",
+    "TrainingTime": 360,
+    "LabelColumn": "ReduceBy",
+    "ValidationOption": {
+      "Version": 0,
+      "Type": "CrossValidationValidationOption",
+      "NumberOfFolds": 5
+    }
+  }
+}

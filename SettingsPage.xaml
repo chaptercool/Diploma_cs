@@ -6,7 +6,11 @@
 
     <ScrollView>
         <VerticalStackLayout Style="{StaticResource VerticalStackProperties}">
-            <Label Text="Ustawienia" Style="{StaticResource Heading1}"/>
+            <Label Text="Ustawienia" Style="{StaticResource Heading1}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnLabelTapped"/>
+                </Label.GestureRecognizers>
+            </Label>
             <Label Text="Cześć, Jarek!" Style="{StaticResource Heading2}"/>
             
             <VerticalStackLayout Spacing="22">

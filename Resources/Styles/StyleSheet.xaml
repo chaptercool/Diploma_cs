@@ -92,7 +92,24 @@
         <Setter Property="MaximumHeightRequest" Value="12"/>
         <Setter Property="BackgroundColor" Value="Transparent"/>
     </Style>
-
+    
+    <!--OTHER CONTROLS-->
+    
+    <!--Textfield (on tape and glue)-->
+    <Style x:Key="RoundedEntryFrame" TargetType="Border">
+        <Setter Property="StrokeShape" Value="RoundRectangle 10" />
+        <Setter Property="Shadow" Value="None" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Gray200}" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+    </Style>
+    <Style x:Key="EntryInRoundedFrame" TargetType="Entry">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="TextColor" Value="Black"/>
+        <Setter Property="PlaceholderColor" Value="{StaticResource Gray600}"/>
+        <Setter Property="ClearButtonVisibility" Value="WhileEditing"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
     
     <!--PAGE BLOCKS AND ELEMENTS-->
     
