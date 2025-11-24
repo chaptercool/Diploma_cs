@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Diploma_cs.Setup.SetupSummaryPage"
+             Shell.TabBarIsVisible="False">
+    <VerticalStackLayout Style="{StaticResource VerticalStackProperties}">
+        <Label Text="Podsumowanie" Style="{StaticResource Heading1}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Start"/>
+        <Image Source="zamknikcie.png" MaximumHeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+        <Label Text="Twój początkowy cel to:" Style="{StaticResource Heading2}"/>
+        <VerticalStackLayout Style="{StaticResource MainCounterBlock}" x:Name="MainCounterBlock">
+            <Label
+                    Text="10"
+                    FontFamily="OnestExtraBold"
+                    FontSize="96"
+                    TextColor="{StaticResource Blue400}"
+                    HorizontalOptions="Center"/>
+            <Label
+                    Text="papierosów na dzień"
+                    FontSize="24"
+                    HorizontalOptions="Center"
+                    TextColor="#95918E"/>
+        </VerticalStackLayout>
+        <Label
+            Text="Dany cel został obliczony na podstawie danych wprowadzonych przez ciebie
+            Należy trzymać się w ramach tego celu aby nie przekrocić go. Przekroczenie celu powoduje uniemożliwienie otrzymanie osiągnieć i dłuższy proces rzucenia palenia."
+            Style="{StaticResource AdditionalText}"/>
+
+        <Button Text="Zakończ" Style="{StaticResource PrimaryButton}" VerticalOptions="End" Clicked="OnNextButtonClicked"/>
+
+
+    </VerticalStackLayout>
+</ContentPage>

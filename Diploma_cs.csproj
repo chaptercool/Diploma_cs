@@ -70,6 +70,7 @@
 	  <None Remove="Resources\Images\Misc\SadEmoji.svg" />
 	  <None Remove="Resources\Images\Misc\TendencyBlock.svg" />
 	  <None Remove="Resources\Images\Misc\VerySadEmoji.svg" />
+	  <None Remove="Resources\Images\Placeholders\zamknikcie.png" />
 	  <None Remove="Resources\Images\SettingsIcons\information.svg" />
 	  <None Remove="Resources\Images\SettingsIcons\mode.svg" />
 	  <None Remove="Resources\Images\SettingsIcons\prefer.svg" />
@@ -109,6 +110,7 @@
 	  <MauiImage Include="Resources\Images\Misc\sademoji.svg" />
 	  <MauiImage Include="Resources\Images\Misc\tendencyblock.svg" />
 	  <MauiImage Include="Resources\Images\Misc\verysademoji.svg" />
+	  <MauiImage Include="Resources\Images\Placeholders\zamknikcie.png" />
 	  <MauiImage Include="Resources\Images\SettingsIcons\mode.svg" />
 	  <MauiImage Include="Resources\Images\SettingsIcons\prefer.svg" />
 	  <MauiImage Include="Resources\Images\SettingsIcons\privacy.svg" />
@@ -164,6 +166,21 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="SettingsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Setup\SetupGeneralInfoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Setup\SetupStartPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Setup\SetupSuccessPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Setup\SetupSummaryPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Setup\SetupTargetsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="TipsPage.xaml">

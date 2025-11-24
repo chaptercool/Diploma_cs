@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Diploma_cs.Setup.SetupStartPage"
+             Shell.TabBarIsVisible="False">
+    <VerticalStackLayout Style="{StaticResource VerticalStackProperties}" VerticalOptions="Center">
+        <Image 
+            Source="zamknikcie.png"
+            MaximumHeightRequest="150"
+            MaximumWidthRequest="150"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+        <Label Text="(app name)" Style="{StaticResource Heading1}" HorizontalOptions="Center"/>
+        <Label Text="Jesteś gotowy stać zdrowszym?" Style="{StaticResource AdditionalText}" HorizontalOptions="Center" Margin="0, 0, 0, 10"/>
+
+        <Button Style="{StaticResource PrimaryButton}" Text="Start" WidthRequest="200" Margin="0, 5, 0, 0" Clicked="OnStartClicked"/>
+    </VerticalStackLayout>
+</ContentPage>

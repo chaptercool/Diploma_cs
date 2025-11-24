@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Diploma_cs.Setup.SetupTargetsPage"
+             Shell.TabBarIsVisible="False">
+    <VerticalStackLayout Style="{StaticResource VerticalStackProperties}">
+        <Label Text="Twój styl palenia" Style="{StaticResource Heading1}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Start"/>
+        <Image Source="zamknikcie.png" MaximumHeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+        <Label Text="Ile palisz dziennie?" Style="{StaticResource AdditionalText}"/>
+        <Border Style="{StaticResource RoundedEntryFrame}">
+            <Entry x:Name="UserDailyConsume"
+               Style="{StaticResource EntryInRoundedFrame}"
+               Placeholder="Liczba papierosów dziennie"
+               Keyboard="Numeric"
+               ReturnType="Next"/>
+        </Border>
+
+        <Label Text="Ile kosztuje paczka?" Style="{StaticResource AdditionalText}"/>
+        <Border Style="{StaticResource RoundedEntryFrame}">
+            <Entry x:Name="UserPackPrice"
+               Style="{StaticResource EntryInRoundedFrame}"
+               Placeholder="Cena paczki"
+               Keyboard="Numeric"
+               ReturnType="Done"/>
+        </Border>
+
+        <Button Text="Dalej" Style="{StaticResource PrimaryButton}" VerticalOptions="End" Clicked="OnNextButtonClicked"/>
+        
+
+
+    </VerticalStackLayout>
+</ContentPage>

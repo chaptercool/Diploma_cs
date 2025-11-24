@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Runtime.CompilerServices;
+using Diploma_cs.Setup;
 using Microsoft.ML;
 
 namespace Diploma_cs.SecondaryPages;
@@ -46,7 +47,6 @@ public partial class DebugPage : ContentPage
         {
             var result = MainComputingModule.Predict(sampleData);
 
-            // Show both fields while you verify which one is the true prediction
             await DisplayAlert("Prediction Result",
                 $"ReduceBy: {result.Score:F2}",
                 "Close");
@@ -59,6 +59,11 @@ public partial class DebugPage : ContentPage
         {
             await DisplayAlert("Prediction error", ex.Message, "OK");
         }
+    }
+
+    private async void OnSetupClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new SetupStartPage());
     }
 
 }

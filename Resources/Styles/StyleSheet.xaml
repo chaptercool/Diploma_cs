@@ -111,6 +111,14 @@
         <Setter Property="FontSize" Value="16"/>
     </Style>
     
+    <!--Picker (dropdown list)-->
+    <Style x:Key="Dropdown" TargetType="Picker">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="TextColor" Value="Black"/>
+        <Setter Property="TitleColor" Value="{StaticResource Gray600}"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+    
     <!--PAGE BLOCKS AND ELEMENTS-->
     
     <!--Main counter block-->

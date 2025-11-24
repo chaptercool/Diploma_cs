@@ -37,6 +37,20 @@
             <Button Style="{StaticResource PrimaryButton}"
                     Text="Predict"
                     Clicked="OnPredictClicked"/>
+
+            <RoundRectangle Style="{StaticResource BlockSeparator}"/>
+
+            <Label Style="{StaticResource Heading2}" Text="Setup entrance"/>
+            <Label Style="{StaticResource AdditionalText}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Enter setup process by pressing button below."/>
+                        <Span Text="WARNING! Entering setup after configuring app may cause data corruption or crash." FontAttributes="Bold"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Button Style="{StaticResource PrimaryButton}" Text="Enter setup" Clicked="OnSetupClicked"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

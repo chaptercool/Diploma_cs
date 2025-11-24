@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Diploma_cs.Setup.SetupSuccessPage"
+             Shell.TabBarIsVisible="False">
+    <VerticalStackLayout Style="{StaticResource VerticalStackProperties}">
+        <Label Text="Gotowe!" Style="{StaticResource Heading1}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Start"/>
+
+        <Image
+            Source="checkmark_l.png"
+            HorizontalOptions="Center"
+            MaximumHeightRequest="128"
+            MaximumWidthRequest="128"/>
+
+        <Label Text="Wszystko zależy tylko od ciebie. To ty decydujesz o swojej przyszłości. Powodzenia!" Style="{StaticResource AdditionalText}" HorizontalTextAlignment="Center"/>
+
+        <Button Text="Do ekranu głównego" Style="{StaticResource PrimaryButton}" VerticalOptions="End" Clicked="Button_Clicked"/>
+
+    </VerticalStackLayout>
+</ContentPage>
