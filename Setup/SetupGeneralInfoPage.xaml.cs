@@ -1,14 +1,19 @@
 using System;
 using System.Globalization;
 using Microsoft.Maui.Controls;
+using Diploma_cs.Data.Services;
+using Diploma_cs.Services;
 
 namespace Diploma_cs.Setup;
 
 public partial class SetupGeneralInfoPage : ContentPage
 {
+	private readonly AppDataService _appDataService;
+
 	public SetupGeneralInfoPage()
 	{
 		InitializeComponent();
+		_appDataService = ServiceHelper.GetService<AppDataService>();
 	}
 
 	private async void OnNextButtonClicked(object sender, EventArgs e)
@@ -50,11 +55,18 @@ public partial class SetupGeneralInfoPage : ContentPage
 
 		try
 		{
-            await Navigation.PushAsync(new SetupTargetsPage());
-        }
-		catch
+			var setupSession = new SetupSessionData
+			{
+				Name = name,
+				Age = age,
+				Gender = gender.ToString() ?? string.Empty
+			};
+
+			await Navigation.PushAsync(new SetupTargetsPage { SetupSession = setupSession });
+		}
+		catch (Exception ex)
 		{
-			await DisplayAlert("Error", "Unknown error", "OK");
+			await DisplayAlert("Error", $"Unknown error: {ex.Message}", "OK");
 		}
 	}
 }

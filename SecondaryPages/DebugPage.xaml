@@ -50,7 +50,37 @@
                 </Label.FormattedText>
             </Label>
 
-            <Button Style="{StaticResource PrimaryButton}" Text="Enter setup" Clicked="OnSetupClicked"/>
+            <Button Style="{StaticResource TertiaryButton}" Text="Enter setup" Clicked="OnSetupClicked"/>
+            
+            <RoundRectangle Style="{StaticResource BlockSeparator}"/>
+
+            <Label Style="{StaticResource Heading2}" Text="Data viewer"/>
+            <Label Style="{StaticResource AdditionalText}" Text="Current collected data from user is shown below:"/>
+
+            <VerticalStackLayout>
+
+                <HorizontalStackLayout Spacing="12" HorizontalOptions="Fill">
+                    <Label Text="Sessions today:" FontAttributes="Bold" Style="{StaticResource AdditionalText}"/>
+                    <Label x:Name="SessionsCountLabel" Text="0" TextColor="{StaticResource Blue400}" FontAttributes="Bold" Style="{StaticResource AdditionalText}"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="12" HorizontalOptions="Fill">
+                    <Label Text="Packs bought:" FontAttributes="Bold" Style="{StaticResource AdditionalText}"/>
+                    <Label x:Name="PacksCountLabel" Text="0" TextColor="{StaticResource Blue400}" FontAttributes="Bold" Style="{StaticResource AdditionalText}"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="12" HorizontalOptions="Fill">
+                    <Label Text="Amount spent:" FontAttributes="Bold" Style="{StaticResource AdditionalText}"/>
+                    <Label x:Name="AmountSpentLabel" Text="0.00 zł" TextColor="{StaticResource Blue400}" FontAttributes="Bold" Style="{StaticResource AdditionalText}"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="12" HorizontalOptions="Fill">
+                    <Label Text="Daily target:" FontAttributes="Bold" Style="{StaticResource AdditionalText}"/>
+                    <Label x:Name="CurrentTargetLabel" Text="0" TextColor="{StaticResource Blue400}" FontAttributes="Bold" Style="{StaticResource AdditionalText}"/>
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
         </VerticalStackLayout>
+        
     </ScrollView>
 </ContentPage>

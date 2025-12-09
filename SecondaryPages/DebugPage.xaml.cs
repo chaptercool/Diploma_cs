@@ -1,5 +1,7 @@
 using System.Globalization;
 using System.Runtime.CompilerServices;
+using Diploma_cs.Data.Services;
+using Diploma_cs.Services;
 using Diploma_cs.Setup;
 using Microsoft.ML;
 
@@ -7,13 +9,22 @@ namespace Diploma_cs.SecondaryPages;
 
 public partial class DebugPage : ContentPage
 {
-	public DebugPage()
-	{
-		InitializeComponent();
-	}
+    private readonly AppDataService _appDataService;
 
-	private async void OnPredictClicked(object sender, EventArgs e)
-	{
+    public DebugPage()
+    {
+        InitializeComponent();
+        _appDataService = ServiceHelper.GetService<AppDataService>();
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await LoadAndDisplayDataAsync();
+    }
+
+    private async void OnPredictClicked(object sender, EventArgs e)
+    {
         var avgConsumedText = AvgConsumed?.Text?.Trim() ?? string.Empty;
         var avgBoughtText = AvgBoughtPacks?.Text?.Trim() ?? string.Empty;
         var boughtSumText = BoughtSum?.Text?.Trim() ?? string.Empty;
@@ -63,7 +74,46 @@ public partial class DebugPage : ContentPage
 
     private async void OnSetupClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new SetupStartPage());
+        var result = await DisplayAlert("Warning", "Enter setup process? This may cause data corruption!", "Yes", "No");
+        if (result)
+        {
+            Application.Current!.MainPage = new NavigationPage(new SetupStartPage());
+        }
     }
 
+    private async void OnRefreshDataClicked(object sender, EventArgs e)
+    {
+        await LoadAndDisplayDataAsync();
+        await DisplayAlert("Success", "Data refreshed!", "OK");
+    }
+
+    private async Task LoadAndDisplayDataAsync()
+    {
+        try
+        {
+            var sessionsCount = await _appDataService.GetTodaySessionsCountAsync();
+            SessionsCountLabel.Text = sessionsCount.ToString();
+
+            var packsCount = await _appDataService.GetTodayPacksCountAsync();
+            PacksCountLabel.Text = packsCount.ToString();
+
+            var userProfile = await _appDataService.GetUserProfileAsync();
+            if (userProfile != null)
+            {
+                decimal amountSpent = (decimal)(packsCount * userProfile.PackPrice);
+                AmountSpentLabel.Text = $"{amountSpent:F2} z³";
+            }
+            else
+            {
+                AmountSpentLabel.Text = "N/A";
+            }
+
+            var currentTarget = await _appDataService.GetCurrentTargetAsync();
+            CurrentTargetLabel.Text = (currentTarget ?? 0).ToString();
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"Failed to load data: {ex.Message}", "OK");
+        }
+    }
 }

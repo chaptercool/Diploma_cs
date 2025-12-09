@@ -18,114 +18,24 @@
 
             <VerticalStackLayout Style="{StaticResource MainCounterBlock}" x:Name="MainCounterBlock">
                 <Label
+                    x:Name="TargetLabel"
                     Text="10"
                     FontFamily="OnestExtraBold"
                     FontSize="96"
                     TextColor="{StaticResource Blue400}"
                     HorizontalOptions="Center"/>
                 <Label
+                    x:Name="UnitLabel"
                     Text="papierosów"
                     FontSize="24"
                     HorizontalOptions="Center"
                     TextColor="#95918E"/>
+                <Label
+                    x:Name="SessionCountLabel"
+                    Text="Dotychczasowo zarejestrowano sesji: 0"
+                    Margin="0, 30, 0, 0"
+                    HorizontalOptions="Center"/>
             </VerticalStackLayout>
-            <RoundRectangle Style="{StaticResource BlockSeparator}"/>
-
-            <Grid HorizontalOptions="Fill">
-                <Label Text="Twoje pozostałe cele" Style="{StaticResource Heading2}"/>
-                <ImageButton Style="{StaticResource Heading2Button}" Source="setting.png"/>
-            </Grid>
-            <HorizontalStackLayout
-                Spacing="9"
-                x:Name="GoalsBlock">
-                <Border
-                    Stroke="{StaticResource Gray400}"
-                    StrokeShape="RoundRectangle 10"
-                    Padding="15, 9"
-                    HeightRequest="115"
-                    x:Name="GoalTile"
-                    Background="White">
-                    <Border.Shadow>
-                        <Shadow
-                            Brush="Black"
-                            Offset="0, 2"
-                            Radius="3"
-                            Opacity="0.25"/>
-                    </Border.Shadow>
-                    <StackLayout Orientation="Vertical" Spacing="5">
-                        <Label Text="Rzucisz" FontFamily="OnestMedium" FontSize="14" HorizontalOptions="Center"/>
-                        <Label Text="14.06" FontFamily="OnestBold" FontSize="20" HorizontalOptions="Center"/>
-                        <Label Text="do" FontFamily="OnestMedium" FontSize="14" HorizontalOptions="Center"/>
-                        <Image Source="warning.png" HeightRequest="18" WidthRequest="18"/>
-                    </StackLayout>
-                </Border>
-
-                <Border
-                    Stroke="{StaticResource Gray400}"
-                    StrokeShape="RoundRectangle 10"
-                    Padding="15, 9"
-                    HeightRequest="115"
-                    x:Name="GoalTile2"
-                    Background="White">
-                    <Border.Shadow>
-                        <Shadow
-                            Brush="Black"
-                            Offset="0, 2"
-                            Radius="3"
-                            Opacity="0.25"/>
-                    </Border.Shadow>
-                    <StackLayout Orientation="Vertical" Spacing="5">
-                        <Label Text="Oszczędzasz" FontFamily="OnestMedium" FontSize="14" HorizontalOptions="Center"/>
-                        <Label Text="50" FontFamily="OnestBold" FontSize="20" HorizontalOptions="Center"/>
-                        <Label Text="zł/dzień" FontFamily="OnestMedium" FontSize="14" HorizontalOptions="Center"/>
-                        <Image Source="error.png" HeightRequest="18" WidthRequest="18"/>
-                    </StackLayout>
-                </Border>
-
-                <Border
-                    Stroke="{StaticResource Gray400}"
-                    StrokeShape="RoundRectangle 10"
-                    Padding="15, 9"
-                    HeightRequest="115"
-                    x:Name="GoalTile3"
-                    Background="White">
-                    <Border.Shadow>
-                        <Shadow
-                            Brush="Black"
-                            Offset="0, 2"
-                            Radius="3"
-                            Opacity="0.25"/>
-                    </Border.Shadow>
-                    <StackLayout Orientation="Vertical" Spacing="5">
-                        <Label Text="Palisz razy" FontFamily="OnestMedium" FontSize="14" HorizontalOptions="Center"/>
-                        <Label Text="10" FontFamily="OnestBold" FontSize="20" HorizontalOptions="Center"/>
-                        <Label Text="dziennie" FontFamily="OnestMedium" FontSize="14" HorizontalOptions="Center"/>
-                        <Image Source="checkmark.png" HeightRequest="18" WidthRequest="18"/>
-                    </StackLayout>
-                </Border>
-
-                <Border
-                    Stroke="{StaticResource Gray400}"
-                    StrokeShape="RoundRectangle 10"
-                    Padding="15, 9"
-                    HeightRequest="115"
-                    x:Name="GoalTile4"
-                    Background="White">
-                    <Border.Shadow>
-                        <Shadow
-                            Brush="Black"
-                            Offset="0, 2"
-                            Radius="3"
-                            Opacity="0.25"/>
-                    </Border.Shadow>
-                    <StackLayout Orientation="Vertical" Spacing="5">
-                        <Label Text="Rzucisz" FontFamily="OnestMedium" FontSize="14" HorizontalOptions="Center"/>
-                        <Label Text="14.06" FontFamily="OnestBold" FontSize="20" HorizontalOptions="Center"/>
-                        <Label Text="do" FontFamily="OnestMedium" FontSize="14" HorizontalOptions="Center"/>
-                        <Image Source="checkmark.png" HeightRequest="18" WidthRequest="18"/>
-                    </StackLayout>
-                </Border>
-            </HorizontalStackLayout>
             
             <RoundRectangle Style="{StaticResource BlockSeparator}"/>
             
@@ -240,7 +150,7 @@
             <RoundRectangle Style="{StaticResource BlockSeparator}"/>
 
             <Label
-                Text="Dzisiejsza afirmacja"
+                Text="Statystyki za ostatnie 7 dni"
                 Style="{StaticResource Heading2}"/>
             <StackLayout
                 Orientation="Vertical"
@@ -248,7 +158,7 @@
                 x:Name="AffirmationBlock"
                 Spacing="15">
                 <Label
-                    Text=" 'Nazwa tekstu Nazwa tekstu Nazwa tekstu Nazwa tekstu' "
+                    Text="coming soon..."
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     FontSize="24"

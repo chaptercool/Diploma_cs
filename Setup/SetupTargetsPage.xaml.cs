@@ -1,7 +1,21 @@
+using Diploma_cs.Models;
+using Diploma_cs.Services;
+
 namespace Diploma_cs.Setup;
+
+public class SetupSessionData
+{
+	public string Name { get; set; } = string.Empty;
+	public int Age { get; set; }
+	public string Gender { get; set; } = string.Empty;
+	public int DailyConsumption { get; set; }
+	public float PackPrice { get; set; }
+}
 
 public partial class SetupTargetsPage : ContentPage
 {
+	public SetupSessionData? SetupSession { get; set; }
+
 	public SetupTargetsPage()
 	{
 		InitializeComponent();
@@ -40,11 +54,17 @@ public partial class SetupTargetsPage : ContentPage
 
         try
         {
-            await Navigation.PushAsync(new SetupSummaryPage());
+			if (SetupSession != null)
+			{
+				SetupSession.DailyConsumption = dailyConsumeVal;
+				SetupSession.PackPrice = packPriceVal;
+			}
+
+            await Navigation.PushAsync(new SetupSummaryPage { SetupSession = SetupSession });
         }
-        catch
+        catch (Exception ex)
         {
-            await DisplayAlert("Error", "Unknown error", "OK");
+            await DisplayAlert("Error", $"Unknown error: {ex.Message}", "OK");
         }
     }
 }

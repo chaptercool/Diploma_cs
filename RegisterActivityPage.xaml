@@ -9,7 +9,7 @@
 
             <Button Style="{StaticResource PrimaryButton}" Text="Zapaliłem papierosa" Clicked="OnButtonClicked"/>
 
-            <Button Style="{StaticResource SecondaryButton}" Text="Kupiłem paczkę papierosów"/>
+            <Button Style="{StaticResource SecondaryButton}" Text="Kupiłem paczkę papierosów" Clicked="OnPackPurchaseClicked"/>
 
             <Button
                 Style="{StaticResource LinkButton}"

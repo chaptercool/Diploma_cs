@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
+using Diploma_cs.Data.Services;
+using Diploma_cs.Data.Repositories;
 
 namespace Diploma_cs
 {
@@ -8,23 +10,43 @@ namespace Diploma_cs
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
-            builder.UseMauiApp<App>().ConfigureFonts(fonts =>
-            {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                fonts.AddFont("Onest-Thin.ttf", "OnestThin");
-                fonts.AddFont("Onest-ExtraLight.ttf", "OnestExtraLight");
-                fonts.AddFont("Onest-Light.ttf", "OnestLight");
-                fonts.AddFont("Onest-Regular.ttf", "OnestRegular");
-                fonts.AddFont("Onest-Medium.ttf", "OnestMedium");
-                fonts.AddFont("Onest-SemiBold.ttf", "OnestSemiBold");
-                fonts.AddFont("Onest-Bold.ttf", "OnestBold");
-                fonts.AddFont("Onest-ExtraBold.ttf", "OnestExtraBold");
-                fonts.AddFont("Onest-Black.ttf", "OnestBlack");
-            }).UseMauiCommunityToolkit();
+            builder
+                .UseMauiApp<App>()
+                .ConfigureFonts(fonts =>
+                {
+                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("Onest-Thin.ttf", "OnestThin");
+                    fonts.AddFont("Onest-ExtraLight.ttf", "OnestExtraLight");
+                    fonts.AddFont("Onest-Light.ttf", "OnestLight");
+                    fonts.AddFont("Onest-Regular.ttf", "OnestRegular");
+                    fonts.AddFont("Onest-Medium.ttf", "OnestMedium");
+                    fonts.AddFont("Onest-SemiBold.ttf", "OnestSemiBold");
+                    fonts.AddFont("Onest-Bold.ttf", "OnestBold");
+                    fonts.AddFont("Onest-ExtraBold.ttf", "OnestExtraBold");
+                    fonts.AddFont("Onest-Black.ttf", "OnestBlack");
+                })
+                .UseMauiCommunityToolkit();
+
+            builder.Services.AddSingleton<AppDataService>();
+            builder.Services.AddSingleton<StatisticsCalculationService>();
+            
+            builder.Services.AddSingleton<CsvUserProfileService>();
+            builder.Services.AddSingleton<CsvSessionService>();
+            builder.Services.AddSingleton<CsvDailyStatsService>();
+            builder.Services.AddSingleton<CsvWeeklyStatsService>();
+            builder.Services.AddSingleton<CsvTargetService>();
+
+            builder.Services.AddSingleton<UserProfileRepository>();
+            builder.Services.AddSingleton<TargetRepository>();
+            builder.Services.AddSingleton<SessionRepository>();
+            builder.Services.AddSingleton<DailyStatsRepository>();
+            builder.Services.AddSingleton<WeeklyStatsRepository>();
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
+
             return builder.Build();
         }
     }
