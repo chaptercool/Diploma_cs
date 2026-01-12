@@ -1,0 +1,13 @@
+AchievementID;AchievementName;Statement;DescriptionUnlocked;DescriptionLocked
+1;Dobry poczatek;Setup was finished;Wlasnie skonfigurowales aplikacje!;None
+2;Pierwsze zmiany;New target was achieved for the first time;Twoj cel zostal zmieniony po raz pierwszy.;Rejestruj aktywnosci codziennie poki nie zostanie zaktualizowany cel.
+3;Mistrz oszczednosci;Saved over 100zl during the whole time;Udalo ci sie zaoszczedzic 100zl.;Staraj sie kupowac mniej paczek aby otrzymac dane osiagniecie.
+4;Dobra passa;Target was not exceeded for the past 7 days;Trzymales(as) sie w ramach celu 7 dni pod rzad.;Trzymaj sie w ramach celu 7 dni pod rzad.
+5;Lepsza passa;Target was not exceeded for the past 14 days;Trzymales(as) sie w ramach celu 14 dni pod rzad.;Trzymaj sie w ramach celu 14 dni pod rzad.
+6;Doskonala passa;Target was not exceedet for the past 21 days;Trzymales(as) sie w ramach celu 21 dni pod rzad.;Trzymaj sie w ramach celu 21 dni pod rzad.
+7;Ekstra passa;Target was not exceedet for the past 28 days;Trzymales(as) sie w ramach celu 28 dni pod rzad.;Trzymaj sie w ramach celu 28 dni pod rzad.
+8;Zmiany na lepsze;Target equals 10;Twoj cel wynosi 10 papierosow na dzien.;Sprobuj dojsc do celu 10 papierosow na dzien.
+9;Czysty dzien;There were no registered sessions yesterday;Nie zarejestrowales zadnej sesji. Czy na pewno nie paliles?;Nie pal przez caly dzien.
+10;Tak trzymac!;User registered sessions every day for the past 7 days;W ci¹gu pierwszych 7 dni rejestrowales aktywnosc.;Rejestruj aktywnosc codziennie w ci¹gu tygodnia.
+11;Bez zadnych wydatkow;User did not registered that he bought any packs yesterday;Nie kupiles zadnej paczki. A na pewno?;Nie kupuj zadnej paczki przez caly dzien.
+12;Kazdy popelnia bledy;Target was exceeded for the first time;Cel zostal przekroczony po raz pierwszy.;Sprobuj nie otrzymac tej nagrody.

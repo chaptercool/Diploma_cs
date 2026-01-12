@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Diploma_cs.Popups.AchievementUnlockedPopup"
+             BackgroundColor="#00000000">
+
+    <Grid 
+        RowDefinitions="*"
+        VerticalOptions="Fill"
+        HorizontalOptions="Fill"
+        BackgroundColor="#80000000"
+        Padding="20">
+
+        <Border
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Background="White"
+            Padding="32"
+            StrokeShape="RoundRectangle 24"
+            MaximumWidthRequest="320"
+            Shadow="0,8,16,0.2">
+
+            <VerticalStackLayout Spacing="16">
+                <Image
+                    x:Name="AchievementIcon"
+                    WidthRequest="100"
+                    HeightRequest="100"
+                    HorizontalOptions="Center"
+                    Aspect="AspectFit"/>
+
+                <Label
+                    Text="Nowe osiągnięcie!"
+                    FontFamily="OnestBold"
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"/>
+
+                <Label
+                    x:Name="AchievementName"
+                    FontFamily="OnestSemiBold"
+                    FontSize="18"
+                    HorizontalTextAlignment="Center"
+                    TextColor="{StaticResource Blue400}"/>
+
+                <Label
+                    x:Name="AchievementDescription"
+                    FontFamily="OnestRegular"
+                    FontSize="14"
+                    HorizontalTextAlignment="Center"
+                    LineBreakMode="WordWrap"
+                    TextColor="#666666"
+                    Margin="0,8,0,0"/>
+
+                <Button
+                    Text="OK"
+                    Style="{StaticResource PrimaryButton}"
+                    Clicked="OnCloseClicked"
+                    Margin="0,16,0,0"/>
+
+            </VerticalStackLayout>
+        </Border>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+             xmlns:droid="clr-namespace:CommunityToolkit.Maui.PlatformConfiguration.AndroidSpecific;assembly=CommunityToolkit.Maui"
+             xmlns:converters="clr-namespace:Diploma_cs.Converters"
+             droid:NavigationBar.Color="White"
+             droid:NavigationBar.Style="Default"
+             x:Class="Diploma_cs.AchievementsPage">
+
+    <ContentPage.Resources>
+        <converters:AchievementTileConverter x:Key="LockIconConverter"/>
+        <converters:AchievementStatusColorConverter x:Key="StatusColorConverter"/>
+        <converters:AchievementStatusTextConverter x:Key="StatusTextConverter"/>
+        <converters:AchievementIconConverter x:Key="IconConverter"/>
+    </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="White" StatusBarStyle="DarkContent"/>
+    </ContentPage.Behaviors>
+
+    <Grid RowDefinitions="Auto,*" Padding="0">
+        <VerticalStackLayout 
+            Grid.Row="0"
+            Padding="27,20,27,13"
+            Spacing="8">
+            <Label Text="Osiągnięcia" Style="{StaticResource Heading1}"/>
+            <Label 
+                x:Name="ProgressLabel"
+                FontFamily="OnestRegular"
+                FontSize="14"
+                Text="Odblokowano: 0/12"/>
+        </VerticalStackLayout>
+		
+        <CollectionView
+            Grid.Row="1"
+            x:Name="AchievementsCollectionView"
+            SelectionMode="Single"
+            SelectionChangedCommand="{Binding AchievementSelectedCommand}"
+            SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}">
+            <CollectionView.Margin>
+                <Thickness Left="9" Top="0" Right="9" Bottom="0"/>
+            </CollectionView.Margin>
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    Orientation="Vertical"
+                    HorizontalItemSpacing="9"
+                    VerticalItemSpacing="9"
+                    Span="2"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Stroke="#CCCCCC"
+                        StrokeShape="RoundRectangle 10"
+                        Padding="7"
+                        WidthRequest="164"
+                        HeightRequest="155"
+                        Background="White">
+                        <Border.Shadow>
+                            <Shadow
+                                Brush="Black"
+                                Offset="0, 2"
+                                Radius="3"
+                                Opacity="0.25"/>
+                        </Border.Shadow>
+                        <Grid RowDefinitions="100,*" VerticalOptions="Fill" HorizontalOptions="Fill" RowSpacing="0">
+                            <Border
+                                Grid.Row="0"
+                                Background="#9EC1FB"
+                                Stroke="Transparent"
+                                StrokeShape="RoundRectangle 10"
+                                Padding="8">
+                                <Image
+                                    Source="{Binding IconFileName, Converter={StaticResource IconConverter}}"
+                                    Aspect="AspectFit"
+                                    WidthRequest="60"
+                                    HeightRequest="60"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"/>
+                            </Border>
+                            <Grid
+                                Grid.Row="1"
+                                ColumnDefinitions="3*,*"
+                                RowDefinitions="Auto"
+                                Padding="5,6,5,4"
+                                VerticalOptions="End"
+                                HorizontalOptions="Fill"
+                                RowSpacing="0"
+                                ColumnSpacing="3">
+                                <Label
+                                    Text="{Binding Name}"
+                                    LineBreakMode="TailTruncation"
+                                    FontFamily="OnestBold"
+                                    FontSize="12"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    VerticalTextAlignment="Center"/>
+                                <Image
+                                    Source="{Binding ., Converter={StaticResource LockIconConverter}}"
+                                    MaximumHeightRequest="18"
+                                    HorizontalOptions="End"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    VerticalOptions="Center"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <ActivityIndicator
+            Grid.Row="1"
+            IsRunning="True"
+            IsVisible="False"
+            Color="{StaticResource Blue400}"
+            x:Name="LoadingIndicator"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+    </Grid>
+</ContentPage>

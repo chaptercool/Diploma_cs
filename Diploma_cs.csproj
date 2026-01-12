@@ -41,6 +41,38 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android|AnyCPU'">
+	  <ApplicationTitle>DropNow</ApplicationTitle>
+	  <ApplicationId>com.chaptercool.diploma_cs</ApplicationId>
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-maccatalyst|AnyCPU'">
+	  <ApplicationTitle>DropNow</ApplicationTitle>
+	  <ApplicationId>com.chaptercool.diploma_cs</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-windows10.0.19041.0|AnyCPU'">
+	  <ApplicationTitle>DropNow</ApplicationTitle>
+	  <ApplicationId>com.chaptercool.diploma_cs</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android|AnyCPU'">
+	  <ApplicationTitle>DropNow</ApplicationTitle>
+	  <ApplicationId>com.chaptercool.diploma_cs</ApplicationId>
+	  <AndroidKeyStore>False</AndroidKeyStore>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-maccatalyst|AnyCPU'">
+	  <ApplicationTitle>DropNow</ApplicationTitle>
+	  <ApplicationId>com.chaptercool.diploma_cs</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-windows10.0.19041.0|AnyCPU'">
+	  <ApplicationTitle>DropNow</ApplicationTitle>
+	  <ApplicationId>com.chaptercool.diploma_cs</ApplicationId>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -57,10 +89,12 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+		<MauiAsset Include="Data\Misc\achievements.csv" />
 		<MauiAsset Include="MachineLearning\MainComputingModule.mlnet" CopyToOutputDirectory="Always" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Data\Misc\achievements.csv" />
 	  <None Remove="Resources\Images\Alerts\CheckMark.svg" />
 	  <None Remove="Resources\Images\Alerts\Error.svg" />
 	  <None Remove="Resources\Images\Alerts\Lock.svg" />
@@ -77,6 +111,10 @@
 	  <None Remove="Resources\Images\SettingsIcons\privacy.svg" />
 	  <None Remove="Resources\Images\SettingsIcons\theme.svg" />
 	  <None Remove="Resources\Images\SettingsIcons\warn.svg" />
+	  <None Remove="Resources\Images\Setup\emoji.svg" />
+	  <None Remove="Resources\Images\Setup\hand.svg" />
+	  <None Remove="Resources\Images\Setup\look.svg" />
+	  <None Remove="Resources\Images\Setup\lung.svg" />
 	  <None Remove="Resources\Images\UiIcons\Add.svg" />
 	  <None Remove="Resources\Images\UiIcons\ArrowLeftActive.svg" />
 	  <None Remove="Resources\Images\UiIcons\ArrowLeftInactive.svg" />
@@ -96,11 +134,24 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.120" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.10" />
 		<PackageReference Include="Microsoft.ML" Version="3.0.1" />
+		<PackageReference Include="OxyPlot.Maui.Skia" Version="1.1.0" />
 		<PackageReference Include="Plotly.NET" Version="3.0.1" />
 		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Include="Resources\Images\AchievementIcons\a_1_one.svg" />
+	  <MauiImage Include="Resources\Images\AchievementIcons\a_2_two.svg" />
+	  <MauiImage Include="Resources\Images\AchievementIcons\a_3_three.svg" />
+	  <MauiImage Include="Resources\Images\AchievementIcons\a_4_four.svg" />
+	  <MauiImage Include="Resources\Images\AchievementIcons\a_5_five.svg" />
+	  <MauiImage Include="Resources\Images\AchievementIcons\a_6_six.svg" />
+	  <MauiImage Include="Resources\Images\AchievementIcons\a_7_seven.svg" />
+	  <MauiImage Include="Resources\Images\AchievementIcons\a_8_eight.svg" />
+	  <MauiImage Include="Resources\Images\AchievementIcons\a_9_nine.svg" />
+	  <MauiImage Include="Resources\Images\AchievementIcons\a_10_ten.svg" />
+	  <MauiImage Include="Resources\Images\AchievementIcons\a_11_eleven.svg" />
+	  <MauiImage Include="Resources\Images\AchievementIcons\a_12_twelve.svg" />
 	  <MauiImage Include="Resources\Images\Alerts\checkmark.svg" />
 	  <MauiImage Include="Resources\Images\Alerts\error.svg" />
 	  <MauiImage Include="Resources\Images\Alerts\lock.svg" />
@@ -116,6 +167,10 @@
 	  <MauiImage Include="Resources\Images\SettingsIcons\privacy.svg" />
 	  <MauiImage Include="Resources\Images\SettingsIcons\theme.svg" />
 	  <MauiImage Include="Resources\Images\SettingsIcons\warn.svg" />
+	  <MauiImage Include="Resources\Images\Setup\emoji.svg" />
+	  <MauiImage Include="Resources\Images\Setup\hand.svg" />
+	  <MauiImage Include="Resources\Images\Setup\look.svg" />
+	  <MauiImage Include="Resources\Images\Setup\lung.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -144,7 +199,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="AchievementsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="ActivityPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Popups\AchievementDetailPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Popups\AchievementUnlockedPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="RegisterActivityPage.xaml">
@@ -183,10 +247,6 @@
 	  <MauiXaml Update="TipsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="ViewModels\" />
 	</ItemGroup>
 
 </Project>

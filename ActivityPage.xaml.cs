@@ -20,7 +20,7 @@ namespace Diploma_cs
             {
                 canvas.StrokeColor = Color.FromArgb("#DBD9D7");
                 canvas.StrokeSize = 3;
-                canvas.StrokeDashPattern = [6, 4];
+                canvas.StrokeDashPattern = new float[] { 6, 4 };
                 float y = dirtyRect.Height / 2;
                 canvas.DrawLine(0, y, dirtyRect.Width, y);
             }
@@ -37,6 +37,7 @@ namespace Diploma_cs
         {
             base.OnAppearing();
             await GenerateCalendarAsync();
+
         }
 
         private async Task GenerateCalendarAsync()

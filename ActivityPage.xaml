@@ -91,13 +91,13 @@
             <Label Text="W tym tygodniu starasz się palić mniej niż zazwyczaj" Style="{StaticResource AdditionalText}"/>
             <Image
                 Source="tendencyblock.png"/>
-            <!--???-->
             <GraphicsView
                 x:Name="DashedSeparator"
                 HeightRequest="5"
                 HorizontalOptions="Fill"
                 VerticalOptions="Center"/>
-            
+
+            <Label Text="Statystyki" Style="{StaticResource Heading2}"/>
             <Label Text="Zauważono większą chęć do palenia bez przyczyny" Style="{StaticResource AdditionalText}"/>
             <Image Source="tendencyblock.png"/>
 

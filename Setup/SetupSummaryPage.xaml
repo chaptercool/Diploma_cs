@@ -5,7 +5,7 @@
              Shell.TabBarIsVisible="False">
     <VerticalStackLayout Style="{StaticResource VerticalStackProperties}">
         <Label Text="Podsumowanie" Style="{StaticResource Heading1}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Start"/>
-        <Image Source="zamknikcie.png" MaximumHeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <Image Source="hand.png" MaximumHeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center"/>
 
         <Label Text="Twój początkowy cel to:" Style="{StaticResource Heading2}"/>
         <VerticalStackLayout Style="{StaticResource MainCounterBlock}" x:Name="MainCounterBlock">

@@ -3,12 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              xmlns:droid="clr-namespace:CommunityToolkit.Maui.PlatformConfiguration.AndroidSpecific;assembly=CommunityToolkit.Maui"
+             xmlns:converters="clr-namespace:Diploma_cs.Converters"
              droid:NavigationBar.Color="White"
              droid:NavigationBar.Style="Default"
              x:Class="Diploma_cs.MainPage">
 
+    <ContentPage.Resources>
+        <converters:AchievementTileConverter x:Key="LockIconConverter"/>
+        <converters:AchievementStatusColorConverter x:Key="StatusColorConverter"/>
+        <converters:AchievementStatusTextConverter x:Key="StatusTextConverter"/>
+    </ContentPage.Resources>
+
     <ContentPage.Behaviors>
-        <mct:StatusBarBehavior StatusBarColor="Transparent" StatusBarStyle="DarkContent"/>
+        <mct:StatusBarBehavior StatusBarColor="White" StatusBarStyle="DarkContent"/>
     </ContentPage.Behaviors>
     <ScrollView>
         <VerticalStackLayout Style="{StaticResource VerticalStackProperties}">
@@ -45,108 +52,87 @@
                     Style="{StaticResource Heading2}"/>
                 <ImageButton 
                     Source="roundarrowright.png"
-                    Style="{StaticResource Heading2Button}"/>
+                    Style="{StaticResource Heading2Button}"
+                    Clicked="OnAchievementsButtonClicked"/>
             </Grid>
-            <HorizontalStackLayout
-                Spacing="9"
-                x:Name="AchievementsBlock">
-                <Border
-                    Stroke="{StaticResource Gray400}"
-                    StrokeShape="RoundRectangle 10"
-                    Padding="8, 8"
-                    WidthRequest="124"
-                    x:Name="GoalTile0"
-                    Background="White">
-                    <Border.Shadow>
-                        <Shadow
-                            Brush="Black"
-                            Offset="0, 2"
-                            Radius="3"
-                            Opacity="0.25"/>
-                    </Border.Shadow>
-                    <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
-                        <RoundRectangle
-                            Background="{StaticResource Blue200}"
-                            HorizontalOptions="Fill"
-                            VerticalOptions="Fill"
-                            HeightRequest="78"
-                            WidthRequest="108"
-                            CornerRadius="10"/>
-                        <Grid
-                            ColumnDefinitions="3*, *"
-                            RowDefinitions="*, *"
-                            VerticalOptions="End">
-                            <Label
-                                Text="Pierwsze kroki"
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                LineBreakMode="TailTruncation"
-                                FontFamily="OnestBold"
-                                FontSize="12"/>
-                            <Label
-                                Text="Odblokowano"
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                LineBreakMode="TailTruncation"
-                                FontSize="8"/>
-                            <Image
-                                Grid.Column="1"
-                                Grid.RowSpan="2"
-                                Source="unlock.png"
-                                MaximumHeightRequest="18"
-                                HorizontalOptions="End"/>
-                        </Grid>
-                    </StackLayout>
-                </Border>
-                <Border
-                    Stroke="{StaticResource Gray400}"
-                    StrokeShape="RoundRectangle 10"
-                    Padding="8, 8"
-                    WidthRequest="124"
-                    x:Name="GoalTile86"
-                    Background="White">
-                    <Border.Shadow>
-                        <Shadow
-                            Brush="Black"
-                            Offset="0, 2"
-                            Radius="3"
-                            Opacity="0.25"/>
-                    </Border.Shadow>
-                    <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
-                        <RoundRectangle
-                            Background="{StaticResource Blue200}"
-                            HorizontalOptions="Fill"
-                            VerticalOptions="Fill"
-                            HeightRequest="78"
-                            WidthRequest="108"
-                            CornerRadius="10"/>
-                        <Grid
-                            ColumnDefinitions="3*, *"
-                            RowDefinitions="*, *"
-                            VerticalOptions="End">
-                            <Label
-                                Text="Mistrz oszczędzności"
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                LineBreakMode="TailTruncation"
-                                FontFamily="OnestBold"
-                                FontSize="12"/>
-                            <Label
-                                Text="Zablokowana"
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                LineBreakMode="TailTruncation"
-                                FontSize="8"/>
-                            <Image
-                                Grid.Column="1"
-                                Grid.RowSpan="2"
-                                Source="lock.png"
-                                MaximumHeightRequest="18"
-                                HorizontalOptions="End"/>
-                        </Grid>
-                    </StackLayout>
-                </Border>
-            </HorizontalStackLayout>
+            <CollectionView
+                x:Name="AchievementsCollectionView"
+                SelectionMode="Single"
+                SelectionChangedCommand="{Binding AchievementSelectedCommand}"
+                SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        Orientation="Horizontal"
+                        ItemSpacing="9"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Stroke="#CCCCCC"
+                            StrokeShape="RoundRectangle 10"
+                            Padding="8"
+                            WidthRequest="124"
+                            HeightRequest="150"
+                            Background="White">
+                            <Border.Shadow>
+                                <Shadow
+                                    Brush="Black"
+                                    Offset="0, 2"
+                                    Radius="3"
+                                    Opacity="0.25"/>
+                            </Border.Shadow>
+                            <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill" Spacing="0">
+                                <Border
+                                    Background="#9EC1FB"
+                                    Stroke="Transparent"
+                                    StrokeShape="RoundRectangle 10"
+                                    WidthRequest="108"
+                                    HeightRequest="78"
+                                    Padding="0">
+                                    <Image
+                                        Source="{Binding IconFileName}"
+                                        Aspect="AspectFit"
+                                        WidthRequest="50"
+                                        HeightRequest="50"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"/>
+                                </Border>
+                                <Grid
+                                    ColumnDefinitions="3*,*"
+                                    RowDefinitions="Auto,Auto"
+                                    VerticalOptions="End"
+                                    HorizontalOptions="Fill">
+                                    <Label
+                                        Text="{Binding Name}"
+                                        LineBreakMode="TailTruncation"
+                                        FontFamily="OnestBold"
+                                        FontSize="11"
+                                        Margin="2,2,0,0"
+                                        Grid.Row="0"
+                                        Grid.Column="0"/>
+                                    <Label
+                                        Text="{Binding ., Converter={StaticResource StatusTextConverter}}"
+                                        LineBreakMode="TailTruncation"
+                                        FontSize="8"
+                                        TextColor="{Binding ., Converter={StaticResource StatusColorConverter}}"
+                                        Margin="2,0,0,2"
+                                        Grid.Row="1"
+                                        Grid.Column="0"/>
+                                    <Image
+                                        Source="{Binding ., Converter={StaticResource LockIconConverter}}"
+                                        MaximumHeightRequest="16"
+                                        HorizontalOptions="End"
+                                        Margin="0,2,2,0"
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"
+                                        Grid.Column="1"/>
+                                </Grid>
+                            </StackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
             <RoundRectangle Style="{StaticResource BlockSeparator}"/>
 
             <Label
@@ -156,16 +142,8 @@
                 Orientation="Vertical"
                 HorizontalOptions="Fill"
                 x:Name="AffirmationBlock"
-                Spacing="15">
-                <Label
-                    Text="coming soon..."
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    FontSize="24"
-                    LineBreakMode="WordWrap"
-                    TextColor="{StaticResource Blue400}"/>
+                Spacing="12">
             </StackLayout>
-            
         </VerticalStackLayout>
     </ScrollView>
 

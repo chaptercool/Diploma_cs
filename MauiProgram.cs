@@ -1,7 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
-using CommunityToolkit.Maui;
-using Diploma_cs.Data.Services;
+﻿using CommunityToolkit.Maui;
 using Diploma_cs.Data.Repositories;
+using Diploma_cs.Data.Services;
+using Diploma_cs.Data.Services.Achievements;
+using Microsoft.Extensions.Logging;
 
 namespace Diploma_cs
 {
@@ -30,18 +31,21 @@ namespace Diploma_cs
 
             builder.Services.AddSingleton<AppDataService>();
             builder.Services.AddSingleton<StatisticsCalculationService>();
+            builder.Services.AddSingleton<AchievementService>();
             
             builder.Services.AddSingleton<CsvUserProfileService>();
             builder.Services.AddSingleton<CsvSessionService>();
             builder.Services.AddSingleton<CsvDailyStatsService>();
             builder.Services.AddSingleton<CsvWeeklyStatsService>();
             builder.Services.AddSingleton<CsvTargetService>();
-
+            
             builder.Services.AddSingleton<UserProfileRepository>();
             builder.Services.AddSingleton<TargetRepository>();
             builder.Services.AddSingleton<SessionRepository>();
             builder.Services.AddSingleton<DailyStatsRepository>();
             builder.Services.AddSingleton<WeeklyStatsRepository>();
+            builder.Services.AddSingleton<AchievementRepository>();
+
 
 #if DEBUG
             builder.Logging.AddDebug();

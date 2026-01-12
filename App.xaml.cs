@@ -1,6 +1,7 @@
 ﻿using Diploma_cs.Data.Services;
 using Diploma_cs.Services;
 using Diploma_cs.Setup;
+using System.Text;
 
 namespace Diploma_cs
 {
@@ -20,8 +21,47 @@ namespace Diploma_cs
             
             MainThread.BeginInvokeOnMainThread(async () =>
             {
+                await CopyEmbeddedFilesAsync();
                 await PerformSetupCheckAsync();
             });
+        }
+
+        private async Task CopyEmbeddedFilesAsync()
+        {
+            try
+            {
+                var achievementsFilePath = Path.Combine(FileSystem.AppDataDirectory, "achievements.csv");
+                if (!File.Exists(achievementsFilePath))
+                {
+                    using var stream = await FileSystem.OpenAppPackageFileAsync("Data/Misc/achievements.csv");
+                    using var ms = new MemoryStream();
+                    await stream.CopyToAsync(ms);
+                    var bytes = ms.ToArray();
+
+                    string content;
+                    content = Encoding.UTF8.GetString(bytes);
+                    bool hasReplacement = content.IndexOf('\uFFFD') >= 0;
+
+                    if (hasReplacement)
+                    {
+                        try
+                        {
+                            var cp1250 = Encoding.GetEncoding(1250);
+                            content = cp1250.GetString(bytes);
+                        }
+                        catch
+                        {
+                        }
+                    }
+
+                    await File.WriteAllTextAsync(achievementsFilePath, content, Encoding.UTF8);
+                    System.Diagnostics.Debug.WriteLine("achievements.csv copied successfully (encoding normalized)");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error copying achievements.csv: {ex.Message}");
+            }
         }
 
         private async Task PerformSetupCheckAsync()

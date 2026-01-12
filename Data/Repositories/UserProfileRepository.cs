@@ -26,7 +26,8 @@ public class UserProfileRepository
             Gender = gender,
             DailyConsumption = dailyConsumption,
             PackPrice = packPrice,
-            InitialTarget = initialTarget
+            InitialTarget = initialTarget,
+            SetupCompletedDate = DateTime.Now
         };
 
         await _profileService.SaveUserProfileAsync(profile);

@@ -7,7 +7,7 @@
         <Label Text="Gotowe!" Style="{StaticResource Heading1}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Start"/>
 
         <Image
-            Source="checkmark_l.png"
+            Source="emoji.png"
             HorizontalOptions="Center"
             MaximumHeightRequest="128"
             MaximumWidthRequest="128"/>

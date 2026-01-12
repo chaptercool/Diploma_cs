@@ -20,6 +20,11 @@
         <Setter Property="FontFamily" Value="OnestSemiBold"/>
     </Style>
     
+    <Style TargetType="Label" x:Key="Heading3">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="OnestSemiBold"/>
+    </Style>
+    
     <Style TargetType="Label" x:Key="AdditionalText">
         <Setter Property="FontFamily" Value="OnestRegular"/>
         <Setter Property="FontSize" Value="16"/>

@@ -5,7 +5,7 @@
              Shell.TabBarIsVisible="False">
     <VerticalStackLayout Style="{StaticResource VerticalStackProperties}">
         <Label Text="Twój styl palenia" Style="{StaticResource Heading1}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Start"/>
-        <Image Source="zamknikcie.png" MaximumHeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <Image Source="look.png" MaximumHeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center"/>
 
         <Label Text="Ile palisz dziennie?" Style="{StaticResource AdditionalText}"/>
         <Border Style="{StaticResource RoundedEntryFrame}">
