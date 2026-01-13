@@ -11,7 +11,7 @@
                     <TapGestureRecognizer Tapped="OnLabelTapped"/>
                 </Label.GestureRecognizers>
             </Label>
-            <Label Text="Cześć, Jarek!" Style="{StaticResource Heading2}"/>
+            <Label Text="Cześć!" x:Name="GreetingLabel" Style="{StaticResource Heading2}"/>
             
             <VerticalStackLayout Spacing="22">
                 <Button Style="{StaticResource SettingsOptionButton}" Text="Preferencje" ImageSource="prefer.png" Clicked="OnSettingTapped"/>

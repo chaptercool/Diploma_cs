@@ -4,10 +4,10 @@ namespace Diploma_cs;
 
 public partial class TipsPage : ContentPage
 {
-	public TipsPage()
-	{
-		InitializeComponent();
-	}
+    public TipsPage()
+    {
+        InitializeComponent();
+    }
 
     async void OnTileClicked(object sender, EventArgs e)
     {

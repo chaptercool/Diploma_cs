@@ -1,20 +1,30 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36127.28 d17.14
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11312.151 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diploma_cs", "Diploma_cs.csproj", "{6265BF36-1D96-46E7-8488-44DE528A8828}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM64 = Debug|ARM64
 		Release|Any CPU = Release|Any CPU
+		Release|ARM64 = Release|ARM64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{6265BF36-1D96-46E7-8488-44DE528A8828}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6265BF36-1D96-46E7-8488-44DE528A8828}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6265BF36-1D96-46E7-8488-44DE528A8828}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6265BF36-1D96-46E7-8488-44DE528A8828}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{6265BF36-1D96-46E7-8488-44DE528A8828}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{6265BF36-1D96-46E7-8488-44DE528A8828}.Debug|ARM64.Deploy.0 = Debug|Any CPU
 		{6265BF36-1D96-46E7-8488-44DE528A8828}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6265BF36-1D96-46E7-8488-44DE528A8828}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6265BF36-1D96-46E7-8488-44DE528A8828}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{6265BF36-1D96-46E7-8488-44DE528A8828}.Release|ARM64.ActiveCfg = Release|ARM64
+		{6265BF36-1D96-46E7-8488-44DE528A8828}.Release|ARM64.Build.0 = Release|ARM64
+		{6265BF36-1D96-46E7-8488-44DE528A8828}.Release|ARM64.Deploy.0 = Release|ARM64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

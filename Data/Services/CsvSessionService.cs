@@ -25,7 +25,7 @@ public class CsvSessionService
                     throw new ArgumentNullException(nameof(session));
 
                 bool fileExists = File.Exists(_sessionsFilePath);
-                
+
                 using (var writer = new StreamWriter(_sessionsFilePath, append: true, encoding: Encoding.UTF8))
                 {
                     if (!fileExists)
@@ -76,7 +76,7 @@ public class CsvSessionService
 
                         try
                         {
-                            if (DateTime.TryParse(parts[0], CultureInfo.InvariantCulture, 
+                            if (DateTime.TryParse(parts[0], CultureInfo.InvariantCulture,
                                 DateTimeStyles.RoundtripKind, out var sessionTime))
                             {
                                 sessions.Add(new SmokingSession

@@ -40,7 +40,7 @@ public class StatisticsCalculationService
             try
             {
                 bool calculated = await _appDataService.CheckAndCalculateWeeklyStatsAsync();
-                
+
                 if (calculated)
                 {
                     var latestWeeklyStats = await _appDataService.GetLatestWeeklyStatsAsync();

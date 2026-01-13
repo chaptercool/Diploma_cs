@@ -29,7 +29,7 @@ public partial class AchievementsPage : ContentPage
             LoadingIndicator.IsRunning = true;
 
             var achievements = await _achievementService.GetAllAchievementsAsync();
-            
+
             System.Diagnostics.Debug.WriteLine($"AchievementsPage: Loaded {achievements?.Count ?? 0} achievements");
 
             if (achievements == null || achievements.Count == 0)

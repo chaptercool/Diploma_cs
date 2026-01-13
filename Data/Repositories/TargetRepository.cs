@@ -8,7 +8,7 @@ public class TargetRepository
     private readonly WeeklyStatsRepository _weeklyStatsRepository;
     private const int SuccessThreshold = 4;
 
-    public TargetRepository(CsvTargetService targetService, 
+    public TargetRepository(CsvTargetService targetService,
                           WeeklyStatsRepository? weeklyStatsRepository = null)
     {
         _targetService = targetService ?? throw new ArgumentNullException(nameof(targetService));

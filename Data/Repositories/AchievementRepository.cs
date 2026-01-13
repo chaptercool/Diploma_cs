@@ -197,7 +197,7 @@ public class CsvUserAchievementService
 
             var line = $"{achievementID};{unlockedDate:O}";
             await File.AppendAllTextAsync(_filePath, line + Environment.NewLine, Encoding.UTF8);
-            
+
             System.Diagnostics.Debug.WriteLine($"Achievement {achievementID} unlocked and saved");
         }
         catch (Exception ex)

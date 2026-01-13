@@ -1,6 +1,8 @@
 using System.Diagnostics;
 using Diploma_cs.Data.Services.Achievements.Checkers;
 using Diploma_cs.Models;
+using Diploma_cs.Services;
+using Diploma_cs.Services.Notifications;
 
 namespace Diploma_cs.Data.Services.Achievements;
 
@@ -56,6 +58,17 @@ public class AchievementService
 
                         await _achievementRepository.SaveUnlockedAchievementAsync(checker.AchievementID, DateTime.Now);
                         newlyUnlocked.Add(achievement);
+
+                        try
+                        {
+                            var notificationService = ServiceHelper.TryGetService<IAppNotificationService>();
+                            if (notificationService != null)
+                                await notificationService.ShowAchievementUnlockedAsync(achievement);
+                        }
+                        catch (Exception notifyEx)
+                        {
+                            Debug.WriteLine($"AchievementService: Failed to send notification: {notifyEx.Message}");
+                        }
 
                         Debug.WriteLine($"Achievement unlocked: {checker.CheckerName} (#{checker.AchievementID})");
                     }

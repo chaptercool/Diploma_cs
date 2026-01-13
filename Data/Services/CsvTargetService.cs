@@ -83,7 +83,7 @@ public class CsvTargetService
 
                         try
                         {
-                            if (DateTime.TryParse(parts[0], CultureInfo.InvariantCulture, 
+                            if (DateTime.TryParse(parts[0], CultureInfo.InvariantCulture,
                                     DateTimeStyles.RoundtripKind, out var date) &&
                                 int.TryParse(parts[1], out var target) &&
                                 float.TryParse(parts[3], CultureInfo.InvariantCulture, out var mlScore))

@@ -8,7 +8,7 @@ public class WeeklyStatsRepository
     private readonly CsvWeeklyStatsService _weeklyStatsService;
     private readonly DailyStatsRepository _dailyStatsRepository;
 
-    public WeeklyStatsRepository(CsvWeeklyStatsService weeklyStatsService, 
+    public WeeklyStatsRepository(CsvWeeklyStatsService weeklyStatsService,
                                DailyStatsRepository? dailyStatsRepository = null)
     {
         _weeklyStatsService = weeklyStatsService ?? throw new ArgumentNullException(nameof(weeklyStatsService));

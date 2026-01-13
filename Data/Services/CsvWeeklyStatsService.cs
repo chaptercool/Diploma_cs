@@ -75,9 +75,9 @@ public class CsvWeeklyStatsService
 
                         try
                         {
-                            if (DateTime.TryParse(parts[0], CultureInfo.InvariantCulture, 
+                            if (DateTime.TryParse(parts[0], CultureInfo.InvariantCulture,
                                     DateTimeStyles.RoundtripKind, out var startDate) &&
-                                DateTime.TryParse(parts[1], CultureInfo.InvariantCulture, 
+                                DateTime.TryParse(parts[1], CultureInfo.InvariantCulture,
                                     DateTimeStyles.RoundtripKind, out var endDate) &&
                                 float.TryParse(parts[2], CultureInfo.InvariantCulture, out var avgConsumed) &&
                                 float.TryParse(parts[3], CultureInfo.InvariantCulture, out var avgBought) &&

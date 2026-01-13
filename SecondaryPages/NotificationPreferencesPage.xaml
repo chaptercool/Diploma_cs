@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Diploma_cs.SecondaryPages.NotificationPreferencesPage">
+
+    <ScrollView>
+        <VerticalStackLayout Style="{StaticResource VerticalStackProperties}" Spacing="16">
+            <Label Text="Powiadomienia" Style="{StaticResource Heading1}"/>
+
+            <HorizontalStackLayout Spacing="25">
+                <Label Text="Wlacz powiadomienia aplikacji" Style="{StaticResource Heading3}" VerticalOptions="Center" HorizontalOptions="Start"/>
+                <Switch x:Name="RemindersEnabledSwitch" HorizontalOptions="End" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <Border Padding="0" StrokeShape="RoundRectangle 10" Background="Transparent" Stroke="Transparent">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Godziny przypomnien" Style="{StaticResource Heading2}" />
+
+                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto" RowSpacing="10">
+                        <Label Text="Pierwsze przypomnienie:" Style="{StaticResource AdditionalText}" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"/>
+                        <TimePicker x:Name="Time1Picker" Grid.Row="0" Grid.Column="1" FontFamily="OnestSemiBold"/>
+
+                        <Label Text="Drugie przypomnienie" Style="{StaticResource AdditionalText}" Grid.Row="1" Grid.Column="0" VerticalOptions="Center"/>
+                        <TimePicker x:Name="Time2Picker" Grid.Row="1" Grid.Column="1" FontFamily="OnestSemiBold"/>
+
+                        <Label Text="Trzecie przypomnienie" Style="{StaticResource AdditionalText}" Grid.Row="2" Grid.Column="0" VerticalOptions="Center"/>
+                        <TimePicker x:Name="Time3Picker" Grid.Row="2" Grid.Column="1" FontFamily="OnestSemiBold"/>
+                    </Grid>
+
+                    <Button x:Name="SaveButton" Text="Zapisz" Clicked="OnSaveClicked" Style="{StaticResource PrimaryButton}"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Label x:Name="PermissionHintLabel" IsVisible="False" TextColor="{StaticResource Gray200}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

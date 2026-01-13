@@ -1,6 +1,7 @@
 using System.Globalization;
 using Diploma_cs.Data.Services;
 using Diploma_cs.Services;
+using Diploma_cs.Services.Notifications;
 using Diploma_cs.Setup;
 
 namespace Diploma_cs.SecondaryPages;
@@ -110,6 +111,34 @@ public partial class DebugPage : ContentPage
         catch (Exception ex)
         {
             await DisplayAlert("Error", $"Failed to load data: {ex.Message}", "OK");
+        }
+    }
+
+    private async void OnSendTestNotificationClicked(object sender, EventArgs e)
+    {
+        try
+        {
+            var notificationService = ServiceHelper.GetService<IAppNotificationService>();
+            var granted = await notificationService.EnsurePermissionsAsync();
+            if (!granted)
+            {
+                await DisplayAlert("Notifications", "Notification permission not granted.", "OK");
+                return;
+            }
+
+            await notificationService.CancelDailyRemindersAsync();
+            await notificationService.RescheduleDailyRemindersAsync();
+
+            await notificationService.ShowAchievementUnlockedAsync(new Models.Achievement
+            {
+                AchievementID = 9999,
+                Name = "Test notification",
+                DescriptionUnlocked = "This is a test notification from DebugPage."
+            });
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Notifications", $"Failed to send test notification: {ex.Message}", "OK");
         }
     }
 }

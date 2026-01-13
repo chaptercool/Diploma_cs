@@ -4,11 +4,10 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:local="clr-namespace:Diploma_cs"  
-    Title="Diploma_cs">
+    xmlns:local="clr-namespace:Diploma_cs">
     <TabBar>  
         <Tab  
-            Title="Ekran główny"  
+            Title="Start"  
             Icon="home.png">  
             <ShellContent  
                 ContentTemplate="{DataTemplate local:MainPage}"/>  
@@ -20,16 +19,10 @@
                 ContentTemplate="{DataTemplate local:ActivityPage}"/>  
         </Tab>  
         <Tab  
-            Title="Dodaj"  
+            Title="Rejestruj"  
             Icon="add.png">  
             <ShellContent  
                 ContentTemplate="{DataTemplate local:RegisterActivityPage}"/>  
-        </Tab>  
-        <Tab  
-            Title="Porady"  
-            Icon="list.png">  
-            <ShellContent  
-                ContentTemplate="{DataTemplate local:TipsPage}"/>  
         </Tab>  
         <Tab  
             Title="Ustawienia"  

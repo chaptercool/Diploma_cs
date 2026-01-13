@@ -8,14 +8,14 @@ public class UserProfileRepository
     private readonly CsvUserProfileService _profileService;
     private readonly TargetRepository _targetRepository;
 
-    public UserProfileRepository(CsvUserProfileService profileService, 
+    public UserProfileRepository(CsvUserProfileService profileService,
                                TargetRepository? targetRepository = null)
     {
         _profileService = profileService ?? throw new ArgumentNullException(nameof(profileService));
         _targetRepository = targetRepository;
     }
 
-    public async Task SaveUserProfileAsync(string name, int age, string gender, 
+    public async Task SaveUserProfileAsync(string name, int age, string gender,
                                           int dailyConsumption, float packPrice)
     {
         int initialTarget = dailyConsumption + 2;

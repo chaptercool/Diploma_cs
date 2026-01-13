@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Diploma_cs.SecondaryPages.EditPersonalDataPage">
+
+    <ScrollView>
+        <VerticalStackLayout Style="{StaticResource VerticalStackProperties}" Spacing="16">
+            <Label Text="Edytuj dane osobowe" Style="{StaticResource Heading1}" />
+
+            <Label Text="Imie" Style="{StaticResource Heading2}" />
+            <Border Style="{StaticResource RoundedEntryFrame}">
+                <Entry x:Name="UserNameEntry"
+                       Style="{StaticResource EntryInRoundedFrame}"
+                       Placeholder="Twoje imie"
+                       Keyboard="Text"
+                       ReturnType="Next" />
+            </Border>
+
+            <Label Text="Wiek" Style="{StaticResource Heading2}" />
+            <Border Style="{StaticResource RoundedEntryFrame}">
+                <Entry x:Name="UserAgeEntry"
+                       Style="{StaticResource EntryInRoundedFrame}"
+                       Placeholder="Wiek"
+                       Keyboard="Numeric"
+                       ReturnType="Done" />
+            </Border>
+
+            <Label Text="Plec" Style="{StaticResource Heading2}" />
+            <Border Style="{StaticResource RoundedEntryFrame}">
+                <Picker x:Name="UserGenderPicker"
+                        Title="Twoja plec"
+                        Style="{StaticResource Dropdown}">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Kobieta</x:String>
+                            <x:String>Mezczyzna</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Border>
+
+            <Button x:Name="SaveButton"
+                    Text="Zapisz"
+                    Clicked="OnSaveClicked"
+                    Style="{StaticResource PrimaryButton}" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

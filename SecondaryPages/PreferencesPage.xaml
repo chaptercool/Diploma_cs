@@ -10,6 +10,9 @@
                 StrokeShape="RoundRectangle 10"
                 Background="Transparent"
                 Stroke="{StaticResource Gray200}">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnEditPersonalDataTapped" />
+                </Border.GestureRecognizers>
                 <Grid
                     ColumnDefinitions="*,Auto"
                     RowDefinitions="Auto,Auto"
@@ -25,13 +28,16 @@
                 StrokeShape="RoundRectangle 10"
                 Background="Transparent"
                 Stroke="{StaticResource Gray200}">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNotificationsTapped" />
+                </Border.GestureRecognizers>
                 <Grid
                     ColumnDefinitions="*,Auto"
                     RowDefinitions="Auto,Auto"
                     RowSpacing="5">
-                    <Label Text="Włącz powiadomienia" Style="{StaticResource Heading3}" Grid.Row="0" Grid.Column="0"/>
-                    <Label Text="Włącz powiadomienia od aplikacji dotyczące przypomnień o rejestracji aktywności" Style="{StaticResource AdditionalText}" Grid.Row="1" Grid.Column="0"/>
-                    <Switch Grid.RowSpan="2" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center"/>
+                    <Label Text="Powiadomienia" Style="{StaticResource Heading3}" Grid.Row="0" Grid.Column="0"/>
+                    <Label Text="Zarządzaj powiadomieniami w aplikacji" Style="{StaticResource AdditionalText}" Grid.Row="1" Grid.Column="0"/>
+                    <Image Source="roundarrowright.png" HeightRequest="25" Grid.RowSpan="2" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center"/>
                 </Grid>
             </Border>
         </VerticalStackLayout>

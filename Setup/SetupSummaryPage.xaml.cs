@@ -5,32 +5,32 @@ namespace Diploma_cs.Setup;
 
 public partial class SetupSummaryPage : ContentPage
 {
-	private readonly AppDataService _appDataService;
-	public SetupSessionData? SetupSession { get; set; }
+    private readonly AppDataService _appDataService;
+    public SetupSessionData? SetupSession { get; set; }
 
-	public SetupSummaryPage()
-	{
-		InitializeComponent();
-		_appDataService = ServiceHelper.GetService<AppDataService>();
-	}
+    public SetupSummaryPage()
+    {
+        InitializeComponent();
+        _appDataService = ServiceHelper.GetService<AppDataService>();
+    }
 
-	protected override void OnAppearing()
-	{
-		base.OnAppearing();
-		DisplaySetupSummary();
-	}
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        DisplaySetupSummary();
+    }
 
-	private void DisplaySetupSummary()
-	{
-		if (SetupSession == null)
-			return;
+    private void DisplaySetupSummary()
+    {
+        if (SetupSession == null)
+            return;
 
-		int initialTarget = SetupSession.DailyConsumption + 2;
-		if (MainCounterBlock?.Children.FirstOrDefault() is Label targetLabel)
-		{
-			targetLabel.Text = initialTarget.ToString();
-		}
-	}
+        int initialTarget = SetupSession.DailyConsumption + 2;
+        if (MainCounterBlock?.Children.FirstOrDefault() is Label targetLabel)
+        {
+            targetLabel.Text = initialTarget.ToString();
+        }
+    }
 
     private async void OnNextButtonClicked(object sender, EventArgs e)
     {

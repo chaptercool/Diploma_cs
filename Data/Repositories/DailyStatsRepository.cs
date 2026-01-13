@@ -9,7 +9,7 @@ public class DailyStatsRepository
     private readonly SessionRepository _sessionRepository;
     private readonly TargetRepository _targetRepository;
 
-    public DailyStatsRepository(CsvDailyStatsService dailyStatsService, 
+    public DailyStatsRepository(CsvDailyStatsService dailyStatsService,
                               SessionRepository? sessionRepository = null,
                               TargetRepository? targetRepository = null)
     {

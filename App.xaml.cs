@@ -1,5 +1,6 @@
 ﻿using Diploma_cs.Data.Services;
 using Diploma_cs.Services;
+using Diploma_cs.Services.Notifications;
 using Diploma_cs.Setup;
 using System.Text;
 
@@ -12,18 +13,35 @@ namespace Diploma_cs
         public App()
         {
             InitializeComponent();
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new AppShell());
         }
 
         protected override void OnStart()
         {
             base.OnStart();
-            
+
             MainThread.BeginInvokeOnMainThread(async () =>
             {
                 await CopyEmbeddedFilesAsync();
                 await PerformSetupCheckAsync();
+                await InitializeNotificationsAsync();
             });
+        }
+
+        private async Task InitializeNotificationsAsync()
+        {
+            try
+            {
+                var notificationService = ServiceHelper.TryGetService<IAppNotificationService>();
+                if (notificationService == null)
+                    return;
+
+                await notificationService.RescheduleDailyRemindersAsync();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"App.InitializeNotificationsAsync error: {ex.Message}");
+            }
         }
 
         private async Task CopyEmbeddedFilesAsync()

@@ -32,7 +32,7 @@ public class SavingsMasterAchievementChecker : IAchievementChecker
             var today = DateTime.Now;
             var firstDay = today.AddYears(-1); // Check past year
             var allDailyStats = await appDataService.GetDailyStatsRangeAsync(firstDay, today);
-            
+
             int totalPacks = 0;
             foreach (var stat in allDailyStats)
             {

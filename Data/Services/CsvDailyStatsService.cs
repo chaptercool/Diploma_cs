@@ -24,11 +24,11 @@ public class CsvDailyStatsService
                     throw new ArgumentNullException(nameof(stats));
 
                 var allStats = ReadAllDailyStats();
-                
+
                 allStats.RemoveAll(s => s.Date.Date == stats.Date.Date);
-                
+
                 allStats.Add(stats);
-                
+
                 allStats = allStats.OrderBy(s => s.Date).ToList();
 
                 WriteDailyStatsToFile(allStats);
@@ -97,7 +97,7 @@ public class CsvDailyStatsService
 
                     try
                     {
-                        if (DateTime.TryParse(parts[0], CultureInfo.InvariantCulture, 
+                        if (DateTime.TryParse(parts[0], CultureInfo.InvariantCulture,
                                 DateTimeStyles.RoundtripKind, out var date) &&
                             int.TryParse(parts[1], out var sessionsCount) &&
                             int.TryParse(parts[2], out var packsCount) &&

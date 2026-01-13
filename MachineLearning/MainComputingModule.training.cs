@@ -13,12 +13,12 @@ namespace Diploma_cs
 {
     public partial class MainComputingModule
     {
-        public const string RetrainFilePath =  @"C:\Users\Yaroslav\OneDrive - University of Information Technology and Management in Rzeszow\PRACA_DYPLOMOWA\collected_data.csv";
+        public const string RetrainFilePath = @"C:\Users\Yaroslav\OneDrive - University of Information Technology and Management in Rzeszow\PRACA_DYPLOMOWA\collected_data.csv";
         public const char RetrainSeparatorChar = ';';
-        public const bool RetrainHasHeader =  true;
-        public const bool RetrainAllowQuoting =  false;
+        public const bool RetrainHasHeader = true;
+        public const bool RetrainAllowQuoting = false;
 
-         /// <summary>
+        /// <summary>
         /// Train a new model with the provided dataset.
         /// </summary>
         /// <param name="outputModelPath">File path for saving the model. Should be similar to "C:\YourPath\ModelName.mlnet"</param>
@@ -89,11 +89,11 @@ namespace Diploma_cs
         public static IEstimator<ITransformer> BuildPipeline(MLContext mlContext)
         {
             // Data process configuration with pipeline data transformations
-            var pipeline = mlContext.Transforms.ReplaceMissingValues(new []{new InputOutputColumnPair(@"AvgConsumedWeek", @"AvgConsumedWeek"),new InputOutputColumnPair(@"AvgBoughtPacks", @"AvgBoughtPacks"),new InputOutputColumnPair(@"BoughtSum", @"BoughtSum")})      
-                                    .Append(mlContext.Transforms.Concatenate(@"Features", new []{@"AvgConsumedWeek",@"AvgBoughtPacks",@"BoughtSum"}))      
-                                    .Append(mlContext.Regression.Trainers.LbfgsPoissonRegression(new LbfgsPoissonRegressionTrainer.Options(){L1Regularization=4.679746F,L2Regularization=1.5058335F,LabelColumnName=@"ReduceBy",FeatureColumnName=@"Features"}));
+            var pipeline = mlContext.Transforms.ReplaceMissingValues(new[] { new InputOutputColumnPair(@"AvgConsumedWeek", @"AvgConsumedWeek"), new InputOutputColumnPair(@"AvgBoughtPacks", @"AvgBoughtPacks"), new InputOutputColumnPair(@"BoughtSum", @"BoughtSum") })
+                                    .Append(mlContext.Transforms.Concatenate(@"Features", new[] { @"AvgConsumedWeek", @"AvgBoughtPacks", @"BoughtSum" }))
+                                    .Append(mlContext.Regression.Trainers.LbfgsPoissonRegression(new LbfgsPoissonRegressionTrainer.Options() { L1Regularization = 4.679746F, L2Regularization = 1.5058335F, LabelColumnName = @"ReduceBy", FeatureColumnName = @"Features" }));
 
             return pipeline;
         }
     }
- }
+}

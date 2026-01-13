@@ -245,7 +245,7 @@ public class AppDataService
             if (daysSinceSetup >= 7)
             {
                 var weeklyStats = await _weeklyStatsRepository.CalculateAndSaveWeeklyStatsAsync();
-                
+
                 if (weeklyStats != null)
                 {
                     var newTarget = await _targetRepository.CalculateAndSaveMLTargetAsync();

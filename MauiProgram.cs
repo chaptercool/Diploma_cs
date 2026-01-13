@@ -2,8 +2,10 @@
 using Diploma_cs.Data.Repositories;
 using Diploma_cs.Data.Services;
 using Diploma_cs.Data.Services.Achievements;
+using Diploma_cs.Services.Notifications;
 using Microsoft.Extensions.Logging;
 using SkiaSharp.Views.Maui.Controls.Hosting;
+using Plugin.LocalNotification;
 
 namespace Diploma_cs
 {
@@ -29,19 +31,23 @@ namespace Diploma_cs
                     fonts.AddFont("Onest-ExtraBold.ttf", "OnestExtraBold");
                     fonts.AddFont("Onest-Black.ttf", "OnestBlack");
                 })
-                .UseMauiCommunityToolkit();
+                .UseMauiCommunityToolkit()
+                .UseLocalNotification();
+
+            builder.Services.AddSingleton<AppNotificationSettings>();
+            builder.Services.AddSingleton<IAppNotificationService, NotificationService>();
 
             builder.Services.AddSingleton<AppDataService>();
             builder.Services.AddSingleton<StatisticsCalculationService>();
             builder.Services.AddSingleton<UiStatisticsService>();
             builder.Services.AddSingleton<AchievementService>();
-            
+
             builder.Services.AddSingleton<CsvUserProfileService>();
             builder.Services.AddSingleton<CsvSessionService>();
             builder.Services.AddSingleton<CsvDailyStatsService>();
             builder.Services.AddSingleton<CsvWeeklyStatsService>();
             builder.Services.AddSingleton<CsvTargetService>();
-            
+
             builder.Services.AddSingleton<UserProfileRepository>();
             builder.Services.AddSingleton<TargetRepository>();
             builder.Services.AddSingleton<SessionRepository>();
