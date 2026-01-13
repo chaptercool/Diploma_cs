@@ -15,7 +15,8 @@
                 Style="{StaticResource LinkButton}"
                 Text="Co muszę wybrac?"
                 HorizontalOptions="Center"
-                VerticalOptions="End"/>
+                VerticalOptions="End"
+                Clicked="OnLinkButtonClicked"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

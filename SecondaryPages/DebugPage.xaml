@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Diploma_cs.Controls"
              x:Class="Diploma_cs.SecondaryPages.DebugPage">
     <ScrollView>
         <VerticalStackLayout Style="{StaticResource VerticalStackProperties}">
             <Label Text="Debug" Style="{StaticResource Heading1}"/>
             <Label Text="For testing purposes only." Style="{StaticResource AdditionalText}"/>
+
+            <Label Text="Sample chart" Style="{StaticResource Heading2}"/>
+            <Label Text="Static sample chart rendered with SkiaSharp (no interactions)." Style="{StaticResource AdditionalText}"/>
+
+            <Border Style="{StaticResource RoundedEntryFrame}">
+                <controls:SampleChartView x:Name="SampleChart"
+                                          HeightRequest="220"
+                                          HorizontalOptions="Fill" />
+            </Border>
+
+            <RoundRectangle Style="{StaticResource BlockSeparator}"/>
 
             <Label Text="Prediction" Style="{StaticResource Heading2}"/>
             <Label Text="Use this tool to test predictions of machine learning model. Enter values such as: &#10; -Average of consumed cigarettes through week &#10; -Average of bought packs through week &#10; -Sum of bought packs through week &#10; &#10; Predictions may not be accurate."/>

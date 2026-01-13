@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Diploma_cs.Controls"
+             x:Class="Diploma_cs.Controls.Last7DaysStatsView">
+
+    <VerticalStackLayout Spacing="10">
+
+        <Border x:Name="FallbackBorder"
+                IsVisible="False"
+				Stroke="Transparent">
+            <VerticalStackLayout Spacing="6">
+				<Image Source="sademoji.png" HorizontalOptions="Center" MaximumHeightRequest="34"/>
+                <Label Text="Póki co nic..." FontFamily="OnestSemiBold" FontSize="24" HorizontalTextAlignment="Center" TextColor="{StaticResource Secondary}"/>
+                <Label Text="Rejestruj aktywności przynajmniej 7 dni aby zobaczyć statystyki"
+                       FontFamily="OnestRegular" FontSize="15" HorizontalTextAlignment="Center" TextColor="{StaticResource Secondary}"/>
+            </VerticalStackLayout>
+        </Border>
+
+        <VerticalStackLayout x:Name="ChartsContainer" Spacing="14" IsVisible="False">
+
+            <Border Style="{StaticResource RoundedEntryFrame}">
+                <controls:BarChartView x:Name="ConsumptionChart" HeightRequest="200" />
+            </Border>
+
+            <Border Style="{StaticResource RoundedEntryFrame}">
+                <controls:BarChartView x:Name="MoneyChart" HeightRequest="200" BarColor="#9EC1FB" />
+            </Border>
+
+            <Border Style="{StaticResource RoundedEntryFrame}">
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="Target excession" Style="{StaticResource Heading2}"/>
+                    <Label x:Name="ExceedInfo" Style="{StaticResource AdditionalText}" />
+                    <controls:BarChartView x:Name="ExceedChart" HeightRequest="160" BarColor="#CC1714" />
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+
+    </VerticalStackLayout>
+</ContentView>

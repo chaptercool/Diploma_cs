@@ -3,6 +3,7 @@ using Diploma_cs.Data.Repositories;
 using Diploma_cs.Data.Services;
 using Diploma_cs.Data.Services.Achievements;
 using Microsoft.Extensions.Logging;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace Diploma_cs
 {
@@ -13,6 +14,7 @@ namespace Diploma_cs
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseSkiaSharp()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -31,6 +33,7 @@ namespace Diploma_cs
 
             builder.Services.AddSingleton<AppDataService>();
             builder.Services.AddSingleton<StatisticsCalculationService>();
+            builder.Services.AddSingleton<UiStatisticsService>();
             builder.Services.AddSingleton<AchievementService>();
             
             builder.Services.AddSingleton<CsvUserProfileService>();

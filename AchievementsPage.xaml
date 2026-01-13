@@ -57,17 +57,10 @@
                         WidthRequest="164"
                         HeightRequest="155"
                         Background="White">
-                        <Border.Shadow>
-                            <Shadow
-                                Brush="Black"
-                                Offset="0, 2"
-                                Radius="3"
-                                Opacity="0.25"/>
-                        </Border.Shadow>
                         <Grid RowDefinitions="100,*" VerticalOptions="Fill" HorizontalOptions="Fill" RowSpacing="0">
                             <Border
                                 Grid.Row="0"
-                                Background="#9EC1FB"
+                                Background="{StaticResource Blue200}"
                                 Stroke="Transparent"
                                 StrokeShape="RoundRectangle 10"
                                 Padding="8">

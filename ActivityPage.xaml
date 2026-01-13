@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Diploma_cs.Controls"
              x:Class="Diploma_cs.ActivityPage">
     <ScrollView>
         <VerticalStackLayout Style="{StaticResource VerticalStackProperties}">
@@ -30,7 +31,6 @@
                 ColumnSpacing="10"
                 RowSpacing="10">
                 
-                <!--Dni tygodnia-->
                 <Label
                     Text="pon"
                     FontSize="12"
@@ -80,26 +80,19 @@
                     Grid.Row="0"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"/>
-
-                <!-- dni wrzucane sa losowo -->
             </Grid>
 
             <RoundRectangle Style="{StaticResource BlockSeparator}"/>
             
             <Label Text="Twoje tendencje" Style="{StaticResource Heading2}"/>
             
-            <Label Text="W tym tygodniu starasz się palić mniej niż zazwyczaj" Style="{StaticResource AdditionalText}"/>
-            <Image
-                Source="tendencyblock.png"/>
+            <controls:Last7DaysStatsView x:Name="Last7DaysStats" />
+
             <GraphicsView
                 x:Name="DashedSeparator"
                 HeightRequest="5"
                 HorizontalOptions="Fill"
                 VerticalOptions="Center"/>
-
-            <Label Text="Statystyki" Style="{StaticResource Heading2}"/>
-            <Label Text="Zauważono większą chęć do palenia bez przyczyny" Style="{StaticResource AdditionalText}"/>
-            <Image Source="tendencyblock.png"/>
 
         </VerticalStackLayout>
     </ScrollView>

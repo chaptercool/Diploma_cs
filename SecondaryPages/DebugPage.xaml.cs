@@ -1,9 +1,7 @@
 using System.Globalization;
-using System.Runtime.CompilerServices;
 using Diploma_cs.Data.Services;
 using Diploma_cs.Services;
 using Diploma_cs.Setup;
-using Microsoft.ML;
 
 namespace Diploma_cs.SecondaryPages;
 
@@ -15,6 +13,10 @@ public partial class DebugPage : ContentPage
     {
         InitializeComponent();
         _appDataService = ServiceHelper.GetService<AppDataService>();
+
+        // Sample data to demonstrate drawing with SkiaSharp.
+        SampleChart.Labels = new[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
+        SampleChart.Values = new float[] { 3, 6, 4, 7, 2, 5, 1 };
     }
 
     protected override async void OnAppearing()
@@ -79,12 +81,6 @@ public partial class DebugPage : ContentPage
         {
             Application.Current!.MainPage = new NavigationPage(new SetupStartPage());
         }
-    }
-
-    private async void OnRefreshDataClicked(object sender, EventArgs e)
-    {
-        await LoadAndDisplayDataAsync();
-        await DisplayAlert("Success", "Data refreshed!", "OK");
     }
 
     private async Task LoadAndDisplayDataAsync()

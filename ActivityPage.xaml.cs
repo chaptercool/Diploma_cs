@@ -10,9 +10,12 @@ namespace Diploma_cs
     public partial class ActivityPage : ContentPage
     {
         private readonly AppDataService _appDataService;
+        private readonly UiStatisticsService _uiStatisticsService;
         private int currentMonth = DateTime.Now.Month;
         private int currentYear = DateTime.Now.Year;
-        private Dictionary<DateTime, DayDetailInfo> _dayDetailCache = new();
+
+        // Cache is keyed strictly by date-only (DateTime at midnight, Kind=Unspecified)
+        private readonly Dictionary<DateTime, DayDetailInfo> _dayDetailCache = new();
 
         public class DashedLineDrawable : IDrawable
         {
@@ -30,6 +33,7 @@ namespace Diploma_cs
         {
             InitializeComponent();
             _appDataService = ServiceHelper.GetService<AppDataService>();
+            _uiStatisticsService = ServiceHelper.GetService<UiStatisticsService>();
             DashedSeparator.Drawable = new DashedLineDrawable();
         }
 
@@ -38,6 +42,28 @@ namespace Diploma_cs
             base.OnAppearing();
             await GenerateCalendarAsync();
 
+            try
+            {
+                var stats = await _uiStatisticsService.GetLast7DaysAsync();
+                Last7DaysStats.Stats = stats;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Failed to load 7-day stats: {ex.Message}");
+            }
+        }
+
+        private static DateTime ToDateKey(DateTime dt) => DateTime.SpecifyKind(dt.Date, DateTimeKind.Unspecified);
+
+        private static Color StatusToColor(DailyStats.DayStatus status)
+        {
+            return status switch
+            {
+                DailyStats.DayStatus.Ok => Color.FromArgb("#9EC1FB"),
+                DailyStats.DayStatus.Target => Color.FromArgb("#4692E3"),
+                DailyStats.DayStatus.Exceeded => Color.FromArgb("#CC1714"),
+                _ => Color.FromArgb("#E6E8EB")
+            };
         }
 
         private async Task GenerateCalendarAsync()
@@ -88,8 +114,9 @@ namespace Diploma_cs
                 _dayDetailCache.Clear();
                 foreach (var stat in monthStats)
                 {
-                    var dayDetail = await _appDataService.GetDayDetailAsync(stat.Date);
-                    _dayDetailCache[stat.Date.Date] = dayDetail;
+                    var key = ToDateKey(stat.Date);
+                    var dayDetail = await _appDataService.GetDayDetailAsync(key);
+                    _dayDetailCache[key] = dayDetail;
                 }
             }
             catch (Exception ex)
@@ -98,56 +125,83 @@ namespace Diploma_cs
             }
         }
 
+        private async Task<Color> GetDayColorAsync(DateTime cellKey)
+        {
+            if (_dayDetailCache.TryGetValue(cellKey, out var cached))
+                return cached.GetStatusColor();
+
+            var detail = await _appDataService.GetDayDetailAsync(cellKey);
+            _dayDetailCache[cellKey] = detail;
+
+            if (detail.SessionsCount == 0 && detail.PacksCount == 0 && detail.Target == 0)
+                return Color.FromArgb("#E6E8EB");
+
+            return detail.GetStatusColor();
+        }
+
         private async Task AddDayCellAsync(int row, int col, int dayNumber, DateTime cellDate)
         {
+            var cellKey = ToDateKey(cellDate);
+
             Border dayBorder = new Border
             {
                 HeightRequest = 38,
                 WidthRequest = 38,
                 StrokeShape = new RoundRectangle { CornerRadius = 100 },
-                Stroke = cellDate.Date == DateTime.Now.Date ? Color.FromArgb("#949494") : Colors.Transparent,
-                StrokeThickness = cellDate.Date == DateTime.Now.Date ? 2 : 0
+                Stroke = cellKey == ToDateKey(DateTime.Now) ? Color.FromArgb("#949494") : Colors.Transparent,
+                StrokeThickness = cellKey == ToDateKey(DateTime.Now) ? 2 : 0
             };
 
-            if (_dayDetailCache.TryGetValue(cellDate.Date, out var dayDetail))
-            {
-                dayBorder.Background = new SolidColorBrush(dayDetail.GetStatusColor());
+            var bg = await GetDayColorAsync(cellKey);
+            dayBorder.Background = new SolidColorBrush(bg);
 
-                var tapGesture = new TapGestureRecognizer();
-                tapGesture.Tapped += async (s, e) => await ShowDayDetailsAsync(dayDetail);
-                dayBorder.GestureRecognizers.Add(tapGesture);
-            }
-            else
-            {
-                dayBorder.Background = new SolidColorBrush(Color.FromArgb("#E6E8EB"));
-            }
+            var hasData = bg != Color.FromArgb("#E6E8EB");
+
+            var contentGrid = new Grid();
 
             Label dayLabel = new Label
             {
                 Text = dayNumber.ToString(),
                 FontSize = 13,
                 HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center
+                VerticalOptions = LayoutOptions.Center,
+                TextColor = hasData ? Colors.White : Colors.Black
             };
 
-            if (_dayDetailCache.ContainsKey(cellDate.Date))
+            var tapOverlay = new BoxView
             {
-                dayLabel.TextColor = Colors.White;
-            }
+                BackgroundColor = Colors.Transparent,
+                InputTransparent = false
+            };
 
-            dayBorder.Content = dayLabel;
+            var tapGesture = new TapGestureRecognizer();
+            tapGesture.Tapped += async (s, e) => await ShowDayDetailsAsync(cellKey);
+            tapOverlay.GestureRecognizers.Add(tapGesture);
+
+            contentGrid.Children.Add(dayLabel);
+            contentGrid.Children.Add(tapOverlay);
+
+            dayBorder.Content = contentGrid;
             calendarGrid.Add(dayBorder, col, row);
         }
 
-        private async Task ShowDayDetailsAsync(DayDetailInfo dayDetail)
+        private async Task ShowDayDetailsAsync(DateTime dayKey)
         {
             try
             {
-                string message = $"Data: {dayDetail.Date:d}\n" +
-                                $"Sesji palenia: {dayDetail.SessionsCount}\n" +
-                                $"Zakupów paczek: {dayDetail.PacksCount}\n" +
-                                $"Cel dzienny: {dayDetail.Target}\n" +
-                                $"Status: {dayDetail.GetStatusText()}";
+                var key = ToDateKey(dayKey);
+
+                if (!_dayDetailCache.TryGetValue(key, out var dayDetail))
+                {
+                    dayDetail = await _appDataService.GetDayDetailAsync(key);
+                    _dayDetailCache[key] = dayDetail;
+                }
+
+                string message = $"Data: {key:d}\n" +
+                                $"Zarejestrowanych sesji: {dayDetail.SessionsCount}\n" +
+                                $"Zakupiono paczek: {dayDetail.PacksCount}\n" +
+                                $"Cel: {dayDetail.Target}\n" +
+                                $"Tzymanie siê celu: {dayDetail.GetStatusText()}";
 
                 await DisplayAlert("Szczegó³y dnia", message, "OK");
             }

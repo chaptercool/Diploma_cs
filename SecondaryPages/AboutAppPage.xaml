@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Diploma_cs.SecondaryPages.AboutAppPage">
+    <VerticalStackLayout Style="{StaticResource VerticalStackProperties}">
+        <Label 
+            Text="O aplikacji"
+            Style="{StaticResource Heading1}"/>
+        <Image Source="zamknikcie.png" MaximumHeightRequest="100"/>
+        <Label Text="DropNow" Style="{StaticResource Heading2}" HorizontalOptions="Center"/>
+        <Label Text="Wersja 1.0" Style="{StaticResource AdditionalText}" HorizontalOptions="Center"/>
+        <Label Text="Aplikacja została stworzona w ramach pracy dyplomowej na uczelni WSiZ w celu pokazania możliwości studenta w opracowaniu rozwiązań informatycznych.&#x0d;&#x0d;Aplikacja wspomaga użytkownikowi w pocesie rzucenia palenia i robi ten proces płynniejszym.&#x0d;&#x0d;" Style="{StaticResource AdditionalText}"/>
+        <Label Text="© Yaroslav Haivoronskyi, 2026" Style="{StaticResource AdditionalText}" HorizontalOptions="Center" TextColor="{StaticResource Gray600}"/>
+    </VerticalStackLayout>
+</ContentPage>

@@ -4,6 +4,7 @@
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              xmlns:droid="clr-namespace:CommunityToolkit.Maui.PlatformConfiguration.AndroidSpecific;assembly=CommunityToolkit.Maui"
              xmlns:converters="clr-namespace:Diploma_cs.Converters"
+             xmlns:controls="clr-namespace:Diploma_cs.Controls"
              droid:NavigationBar.Color="White"
              droid:NavigationBar.Style="Default"
              x:Class="Diploma_cs.MainPage">
@@ -70,25 +71,20 @@
                         <Border
                             Stroke="#CCCCCC"
                             StrokeShape="RoundRectangle 10"
-                            Padding="8"
+                            Padding="7"
                             WidthRequest="124"
                             HeightRequest="150"
                             Background="White">
-                            <Border.Shadow>
-                                <Shadow
-                                    Brush="Black"
-                                    Offset="0, 2"
-                                    Radius="3"
-                                    Opacity="0.25"/>
-                            </Border.Shadow>
-                            <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill" Spacing="0">
+                            <Grid RowDefinitions="100,*"
+                                  VerticalOptions="Fill"
+                                  HorizontalOptions="Fill"
+                                  RowSpacing="0">
                                 <Border
-                                    Background="#9EC1FB"
+                                    Grid.Row="0"
+                                    Background="{StaticResource Blue200}"
                                     Stroke="Transparent"
                                     StrokeShape="RoundRectangle 10"
-                                    WidthRequest="108"
-                                    HeightRequest="78"
-                                    Padding="0">
+                                    Padding="8">
                                     <Image
                                         Source="{Binding IconFileName}"
                                         Aspect="AspectFit"
@@ -98,36 +94,31 @@
                                         VerticalOptions="Center"/>
                                 </Border>
                                 <Grid
+                                    Grid.Row="1"
                                     ColumnDefinitions="3*,*"
-                                    RowDefinitions="Auto,Auto"
+                                    RowDefinitions="Auto"
+                                    Padding="5,0,5,3"
                                     VerticalOptions="End"
-                                    HorizontalOptions="Fill">
+                                    HorizontalOptions="Fill"
+                                    RowSpacing="0"
+                                    ColumnSpacing="3">
                                     <Label
                                         Text="{Binding Name}"
                                         LineBreakMode="TailTruncation"
                                         FontFamily="OnestBold"
                                         FontSize="11"
-                                        Margin="2,2,0,0"
                                         Grid.Row="0"
-                                        Grid.Column="0"/>
-                                    <Label
-                                        Text="{Binding ., Converter={StaticResource StatusTextConverter}}"
-                                        LineBreakMode="TailTruncation"
-                                        FontSize="8"
-                                        TextColor="{Binding ., Converter={StaticResource StatusColorConverter}}"
-                                        Margin="2,0,0,2"
-                                        Grid.Row="1"
-                                        Grid.Column="0"/>
+                                        Grid.Column="0"
+                                        VerticalTextAlignment="Center"/>
                                     <Image
                                         Source="{Binding ., Converter={StaticResource LockIconConverter}}"
                                         MaximumHeightRequest="16"
                                         HorizontalOptions="End"
-                                        Margin="0,2,2,0"
                                         Grid.Row="0"
-                                        Grid.RowSpan="2"
-                                        Grid.Column="1"/>
+                                        Grid.Column="1"
+                                        VerticalOptions="Center"/>
                                 </Grid>
-                            </StackLayout>
+                            </Grid>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -138,12 +129,7 @@
             <Label
                 Text="Statystyki za ostatnie 7 dni"
                 Style="{StaticResource Heading2}"/>
-            <StackLayout
-                Orientation="Vertical"
-                HorizontalOptions="Fill"
-                x:Name="AffirmationBlock"
-                Spacing="12">
-            </StackLayout>
+            <controls:Last7DaysStatsView x:Name="Last7DaysStats" />
         </VerticalStackLayout>
     </ScrollView>
 

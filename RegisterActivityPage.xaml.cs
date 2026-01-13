@@ -56,4 +56,9 @@ public partial class RegisterActivityPage : ContentPage
 			await DisplayAlert("B³¹d", $"Nie uda³o siê zarejestrowaæ aktywnoœci: {ex.Message}", "OK");
 		}
 	}
+
+	async void OnLinkButtonClicked(object sender, EventArgs e)
+	{
+		await DisplayAlert("Jak rejestrowaæ aktywnoœæ?", "Wybierz 'Zapali³em papierosa' jeœli zapali³eœ papierosa.\n\nWybierz 'Kupi³em paczkê papierosów' aby zarejestrowaæ wydatki na papierosy\n\nZarejestrowane aktywnoœci zostan¹ podliczone w ci¹gu 7 dni i u¿yte dla obliczenia nowego celu i statystyk.", "OK");
+    }
 }

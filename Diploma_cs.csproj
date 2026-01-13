@@ -134,8 +134,9 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.120" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.10" />
 		<PackageReference Include="Microsoft.ML" Version="3.0.1" />
-		<PackageReference Include="OxyPlot.Maui.Skia" Version="1.1.0" />
 		<PackageReference Include="Plotly.NET" Version="3.0.1" />
+		<PackageReference Include="SkiaSharp" Version="3.119.1" />
+		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="3.119.1" />
 		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
 	</ItemGroup>
 
@@ -205,6 +206,9 @@
 	  <MauiXaml Update="ActivityPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Controls\Last7DaysStatsView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Popups\AchievementDetailPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -217,10 +221,19 @@
 	  <MauiXaml Update="Resources\Styles\StyleSheet.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="SecondaryPages\AboutAppPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="SecondaryPages\ArticleViewPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="SecondaryPages\DebugPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="SecondaryPages\PreferencesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="SecondaryPages\PrivacyStatementPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="SecondaryPages\SavedMessagePage.xaml">

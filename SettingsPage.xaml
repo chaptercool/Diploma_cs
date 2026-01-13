@@ -14,20 +14,12 @@
             <Label Text="Cześć, Jarek!" Style="{StaticResource Heading2}"/>
             
             <VerticalStackLayout Spacing="22">
-                <Button Style="{StaticResource SettingsOptionButton}" Text="Preferencje" ImageSource="prefer.png"/>
-                <Button Style="{StaticResource SettingsOptionButton}" Text="Wygląd" ImageSource="theme.png"/>
-                <Button Style="{StaticResource SettingsOptionButton}" Text="Tryb aplikacji" ImageSource="mode.png"/>
+                <Button Style="{StaticResource SettingsOptionButton}" Text="Preferencje" ImageSource="prefer.png" Clicked="OnSettingTapped"/>
+                <Button Style="{StaticResource SettingsOptionButton}" Text="Prywatność i bezpieczeństwo" ImageSource="privacy.png" Clicked="OnPrivacyTapped"/>
 
                 <RoundRectangle Style="{StaticResource BlockSeparator}"/>
 
-                <Button Style="{StaticResource SettingsOptionButton}" Text="Prywatność i bezpieczeństwo" ImageSource="privacy.png"/>
-                <Button Style="{StaticResource SettingsOptionButton}" Text="O aplikacji" ImageSource="information.png"/>
-
-                <RoundRectangle Style="{StaticResource BlockSeparator}"/>
-
-                <Button Style="{StaticResource SettingsOptionButton}" Text="Zgłoś usterkę!" ImageSource="warn.png"/>
-
-
+                <Button Style="{StaticResource SettingsOptionButton}" Text="O aplikacji" ImageSource="information.png" Clicked="OnAboutTapped"/>
             </VerticalStackLayout>
 
 

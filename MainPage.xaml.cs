@@ -3,13 +3,13 @@ using Diploma_cs.Data.Services.Achievements;
 using Diploma_cs.Models;
 using Diploma_cs.Popups;
 using Diploma_cs.Services;
-using System.Diagnostics;
 
 namespace Diploma_cs
 {
     public partial class MainPage : ContentPage
     {
         private readonly AppDataService _appDataService;
+        private readonly UiStatisticsService _uiStatisticsService;
         private readonly AchievementService _achievementService;
         private int _currentTarget = 0;
         private bool _achievementsCheckedThisSession = false;
@@ -18,6 +18,7 @@ namespace Diploma_cs
         {
             InitializeComponent();
             _appDataService = ServiceHelper.GetService<AppDataService>();
+            _uiStatisticsService = ServiceHelper.GetService<UiStatisticsService>();
             _achievementService = ServiceHelper.GetService<AchievementService>();
         }
 
@@ -69,6 +70,9 @@ namespace Diploma_cs
 
                 await LoadRecentAchievementsAsync();
 
+                var stats = await _uiStatisticsService.GetLast7DaysAsync();
+                Last7DaysStats.Stats = stats;
+
                 bool isQuit = await _appDataService.IsSuccessfullyQuitAsync();
                 if (isQuit)
                 {
@@ -86,7 +90,7 @@ namespace Diploma_cs
             if (TargetLabel != null)
             {
                 TargetLabel.Text = target.ToString();
-                
+
                 if (sessionsCount < target)
                 {
                     TargetLabel.TextColor = Color.FromArgb("#9EC1FB");
@@ -112,7 +116,7 @@ namespace Diploma_cs
             try
             {
                 var achievements = await _achievementService.GetAllAchievementsAsync();
-                
+
                 if (achievements == null || achievements.Count == 0)
                 {
                     System.Diagnostics.Debug.WriteLine("No achievements found");
@@ -122,19 +126,19 @@ namespace Diploma_cs
                 var recentAchievements = achievements
                     .Where(a => a.IsUnlocked)
                     .OrderByDescending(a => a.UnlockedDate)
-                    .Take(2)
+                    .Take(4)
                     .ToList();
 
-                if (recentAchievements.Count < 2)
+                if (recentAchievements.Count < 4)
                 {
                     var lockedAchievements = achievements
                         .Where(a => !a.IsUnlocked)
-                        .Take(2 - recentAchievements.Count)
+                        .Take(4 - recentAchievements.Count)
                         .ToList();
                     recentAchievements.AddRange(lockedAchievements);
                 }
 
-                AchievementsCollectionView.ItemsSource = recentAchievements.Take(2).ToList();
+                AchievementsCollectionView.ItemsSource = recentAchievements.Take(4).ToList();
                 AchievementsCollectionView.SelectionChangedCommand = new Command<Achievement>(async (achievement) =>
                 {
                     if (achievement != null)
