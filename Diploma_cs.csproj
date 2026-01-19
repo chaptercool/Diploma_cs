@@ -44,7 +44,7 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android|AnyCPU'">
 	  <ApplicationTitle>DropNow</ApplicationTitle>
-	  <ApplicationId>com.chaptercool.diploma_cs</ApplicationId>
+	  <ApplicationId>com.chaptercool.diploma_cs.debug</ApplicationId>
 	  <AndroidKeyStore>False</AndroidKeyStore>
 	  <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
 	</PropertyGroup>
@@ -86,10 +86,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" /> 
+		
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#71a9f3"/>
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -112,6 +112,7 @@
 
 	<ItemGroup>
 	  <None Remove="Data\Misc\achievements.csv" />
+	  <None Remove="Resources\AppIcon\appicon.svg" />
 	  <None Remove="Resources\Images\Alerts\CheckMark.svg" />
 	  <None Remove="Resources\Images\Alerts\Error.svg" />
 	  <None Remove="Resources\Images\Alerts\Lock.svg" />
@@ -144,6 +145,7 @@
 	  <None Remove="Resources\Images\UiIcons\SettinG.svg" />
 	  <None Remove="Resources\Images\UiIcons\Settings.svg" />
 	  <None Remove="Resources\Images\UiIcons\x.svg" />
+	  <None Remove="Resources\Splash\splash.svg" />
 	</ItemGroup>
 
 	<ItemGroup>

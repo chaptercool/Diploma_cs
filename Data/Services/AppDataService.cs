@@ -28,13 +28,19 @@ public class AppDataService
         _csvWeeklyStatsService = new CsvWeeklyStatsService();
         _csvTargetService = new CsvTargetService();
 
-        _targetRepository = new TargetRepository(_csvTargetService);
-        _userProfileRepository = new UserProfileRepository(_csvUserProfileService, _targetRepository);
-        _sessionRepository = new SessionRepository(_csvSessionService);
-        _dailyStatsRepository = new DailyStatsRepository(_csvDailyStatsService, _sessionRepository, _targetRepository);
-        _weeklyStatsRepository = new WeeklyStatsRepository(_csvWeeklyStatsService, _dailyStatsRepository);
-
+        _weeklyStatsRepository = new WeeklyStatsRepository(_csvWeeklyStatsService);
         _targetRepository = new TargetRepository(_csvTargetService, _weeklyStatsRepository);
+
+        _sessionRepository = new SessionRepository(_csvSessionService);
+
+        _dailyStatsRepository = new DailyStatsRepository(
+            _csvDailyStatsService,
+            _sessionRepository,
+            _targetRepository);
+
+        _sessionRepository.SetDailyStatsRepository(_dailyStatsRepository);
+
+        _userProfileRepository = new UserProfileRepository(_csvUserProfileService, _targetRepository);
     }
 
     public async Task InitializeAsync()
@@ -365,6 +371,48 @@ public class AppDataService
     }
 
     #endregion
+
+    public async Task<int> RebuildDailyStatsFromSessionsAsync(
+        bool clearExistingDailyStats = true,
+        DateTime? startDate = null,
+        DateTime? endDate = null)
+    {
+        try
+        {
+            if (clearExistingDailyStats)
+                await _dailyStatsRepository.ClearAllDailyStatsAsync();
+
+            var sessions = await _sessionRepository.GetAllSessionsAsync();
+            if (sessions.Count == 0)
+                return 0;
+
+            var distinctDays = sessions
+                .Select(s => s.SessionTime.Date)
+                .Distinct()
+                .OrderBy(d => d)
+                .ToList();
+
+            var from = (startDate?.Date) ?? distinctDays.First();
+            var to = (endDate?.Date) ?? distinctDays.Last();
+
+            int rebuilt = 0;
+
+            foreach (var day in distinctDays)
+            {
+                if (day < from || day > to)
+                    continue;
+
+                await _dailyStatsRepository.UpdateDailyStatsAsync(day);
+                rebuilt++;
+            }
+
+            return rebuilt;
+        }
+        catch (Exception ex)
+        {
+            throw new InvalidOperationException("Failed to rebuild daily stats from sessions", ex);
+        }
+    }
 }
 
 public class DayDetailInfo

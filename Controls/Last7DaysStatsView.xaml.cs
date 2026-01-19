@@ -36,20 +36,23 @@ public partial class Last7DaysStatsView : ContentView
         FallbackBorder.IsVisible = false;
         ChartsContainer.IsVisible = true;
 
-        ConsumptionChart.Title = "Daily consumption";
+        //ConsumptionChart.Title = "Konsumpcja";
         ConsumptionChart.Labels = stats.Labels;
         ConsumptionChart.Values = stats.DailyConsumption;
 
-        MoneyChart.Title = "Money spent (last 7 days)";
+        //MoneyChart.Title = "Wydatki za ostatnie dni";
         MoneyChart.Labels = stats.Labels;
         MoneyChart.Values = stats.MoneySpent;
 
-        ExceedChart.Title = "Exceeded by";
-        ExceedChart.Labels = stats.Labels;
-        ExceedChart.Values = stats.TargetExceededBy;
+        ExceedBorder.IsVisible = stats.ExceededDaysCount > 0;
 
-        ExceedInfo.Text = stats.ExceededDaysCount == 0
-            ? "No target exceeded in the last 7 days."
-            : $"Target exceeded on {stats.ExceededDaysCount} day(s) in the last 7 days.";
+        if (stats.ExceededDaysCount > 0)
+        {
+            ExceedChart.Title = "Cel przekroczono";
+            ExceedChart.Labels = stats.Labels;
+            ExceedChart.Values = stats.TargetExceededBy;
+
+            ExceedInfo.Text = $"Cel przekroczono {stats.ExceededDaysCount} dzieñ/dni w ci¹gu ostatnich 7 dni.";
+        }
     }
 }

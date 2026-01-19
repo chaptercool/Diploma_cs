@@ -9,11 +9,14 @@ public class CsvDailyStatsService
     private readonly string _dailyStatsFilePath;
     private readonly object _lockObject = new object();
 
+    private const string DateOnlyFormat = "yyyy-MM-dd";
+
     public CsvDailyStatsService()
     {
         var appDataPath = FileSystem.AppDataDirectory;
         _dailyStatsFilePath = Path.Combine(appDataPath, "daily_stats.csv");
     }
+
     public async Task SaveDailyStatsAsync(DailyStats stats)
     {
         lock (_lockObject)
@@ -26,7 +29,6 @@ public class CsvDailyStatsService
                 var allStats = ReadAllDailyStats();
 
                 allStats.RemoveAll(s => s.Date.Date == stats.Date.Date);
-
                 allStats.Add(stats);
 
                 allStats = allStats.OrderBy(s => s.Date).ToList();
@@ -53,6 +55,7 @@ public class CsvDailyStatsService
         var allStats = await GetAllDailyStatsAsync();
         return allStats.FirstOrDefault(s => s.Date.Date == date.Date);
     }
+
     public async Task<List<DailyStats>> GetDailyStatsInRangeAsync(DateTime startDate, DateTime endDate)
     {
         var allStats = await GetAllDailyStatsAsync();
@@ -66,6 +69,33 @@ public class CsvDailyStatsService
     {
         var allStats = await GetAllDailyStatsAsync();
         return allStats.LastOrDefault();
+    }
+
+    private static bool TryParseDailyStatsDate(string text, out DateTime date)
+    {
+        if (DateTime.TryParseExact(
+                text,
+                DateOnlyFormat,
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out date))
+        {
+            date = date.Date;
+            return true;
+        }
+
+        if (DateTime.TryParse(
+                text,
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.RoundtripKind,
+                out date))
+        {
+            date = (date.Kind == DateTimeKind.Utc ? date.ToLocalTime() : date).Date;
+            return true;
+        }
+
+        date = default;
+        return false;
     }
 
     private List<DailyStats> ReadAllDailyStats()
@@ -97,15 +127,14 @@ public class CsvDailyStatsService
 
                     try
                     {
-                        if (DateTime.TryParse(parts[0], CultureInfo.InvariantCulture,
-                                DateTimeStyles.RoundtripKind, out var date) &&
+                        if (TryParseDailyStatsDate(parts[0], out var date) &&
                             int.TryParse(parts[1], out var sessionsCount) &&
                             int.TryParse(parts[2], out var packsCount) &&
                             int.TryParse(parts[3], out var dailyTarget))
                         {
                             stats.Add(new DailyStats
                             {
-                                Date = date.Date,
+                                Date = date,
                                 SessionsCount = sessionsCount,
                                 PacksCount = packsCount,
                                 DailyTarget = dailyTarget
@@ -135,7 +164,8 @@ public class CsvDailyStatsService
 
             foreach (var stat in stats.OrderBy(s => s.Date))
             {
-                string line = $"{stat.Date:O},{stat.SessionsCount},{stat.PacksCount},{stat.DailyTarget}";
+                string dateText = stat.Date.Date.ToString(DateOnlyFormat, CultureInfo.InvariantCulture);
+                string line = $"{dateText},{stat.SessionsCount},{stat.PacksCount},{stat.DailyTarget}";
                 writer.WriteLine(line);
             }
 

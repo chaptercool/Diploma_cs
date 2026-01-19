@@ -6,12 +6,17 @@ namespace Diploma_cs.Data.Repositories;
 public class SessionRepository
 {
     private readonly CsvSessionService _sessionService;
-    private readonly DailyStatsRepository _dailyStatsRepository;
+    private DailyStatsRepository? _dailyStatsRepository;
 
     public SessionRepository(CsvSessionService sessionService, DailyStatsRepository? dailyStatsRepository = null)
     {
         _sessionService = sessionService ?? throw new ArgumentNullException(nameof(sessionService));
         _dailyStatsRepository = dailyStatsRepository;
+    }
+
+    public void SetDailyStatsRepository(DailyStatsRepository dailyStatsRepository)
+    {
+        _dailyStatsRepository = dailyStatsRepository ?? throw new ArgumentNullException(nameof(dailyStatsRepository));
     }
 
     public async Task RegisterSessionAsync(string sessionType = "Smoking")

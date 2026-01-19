@@ -127,7 +127,7 @@
             <RoundRectangle Style="{StaticResource BlockSeparator}"/>
 
             <Label
-                Text="Statystyki za ostatnie 7 dni"
+                Text="Statystyki za ostatnie dni"
                 Style="{StaticResource Heading2}"/>
             <controls:Last7DaysStatsView x:Name="Last7DaysStats" />
         </VerticalStackLayout>

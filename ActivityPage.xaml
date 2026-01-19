@@ -84,7 +84,7 @@
 
             <RoundRectangle Style="{StaticResource BlockSeparator}"/>
             
-            <Label Text="Twoje tendencje" Style="{StaticResource Heading2}"/>
+            <Label Text="Statystyki za ostatnie dni" Style="{StaticResource Heading2}"/>
             
             <controls:Last7DaysStatsView x:Name="Last7DaysStats" />
 

@@ -61,6 +61,8 @@ namespace Diploma_cs
         {
             try
             {
+                // await _appDataService.RebuildDailyStatsFromSessionsAsync(clearExistingDailyStats: true);
+
                 var currentTarget = await _appDataService.GetCurrentTargetAsync();
                 _currentTarget = currentTarget ?? 0;
 

@@ -18,20 +18,25 @@
         </Border>
 
         <VerticalStackLayout x:Name="ChartsContainer" Spacing="14" IsVisible="False">
-
+            <Label Text="Rejestrowane sesje" Style="{StaticResource Heading3}"/>
             <Border Style="{StaticResource RoundedEntryFrame}">
-                <controls:BarChartView x:Name="ConsumptionChart" HeightRequest="200" />
+                <controls:BarChartView x:Name="ConsumptionChart" HeightRequest="200"
+                                       LabelFontSize="28" TitleFontSize="24" YAxisLabelFontSize="28"/>
             </Border>
 
+
+            <Label Text="Wydatki" Style="{StaticResource Heading3}"/>
             <Border Style="{StaticResource RoundedEntryFrame}">
-                <controls:BarChartView x:Name="MoneyChart" HeightRequest="200" BarColor="#9EC1FB" />
+                <controls:BarChartView x:Name="MoneyChart" HeightRequest="200" BarColor="#9EC1FB"
+                                       LabelFontSize="28" TitleFontSize="24" YAxisLabelFontSize="28"/>
             </Border>
 
-            <Border Style="{StaticResource RoundedEntryFrame}">
+            <Border x:Name="ExceedBorder" Style="{StaticResource RoundedEntryFrame}">
                 <VerticalStackLayout Spacing="6">
-                    <Label Text="Target excession" Style="{StaticResource Heading2}"/>
+                    <Label Text="Przekroczenie celu" Style="{StaticResource Heading3}"/>
                     <Label x:Name="ExceedInfo" Style="{StaticResource AdditionalText}" />
-                    <controls:BarChartView x:Name="ExceedChart" HeightRequest="160" BarColor="#CC1714" />
+                    <controls:BarChartView x:Name="ExceedChart" HeightRequest="160" BarColor="#CC1714"
+                                           LabelFontSize="28" TitleFontSize="24" YAxisLabelFontSize="28"/>
                 </VerticalStackLayout>
             </Border>
 
